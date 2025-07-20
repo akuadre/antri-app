@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('dokters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('poli_id')->constrained('polis')->onDelete('cascade');
+            $table->enum('start_day', [
+                'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+            ])->nullable();
+            $table->enum('end_day', [
+                'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+            ])->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
             $table->timestamps();
         });
     }

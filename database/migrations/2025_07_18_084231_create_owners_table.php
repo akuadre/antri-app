@@ -16,10 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('company_name');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->text('alamat');
-            $table->string('telepon');
             $table->timestamps();
         });
     }
