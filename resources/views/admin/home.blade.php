@@ -21,6 +21,8 @@
             </div>
         </header>
 
+        <!-- Title  -->
+        <h2 class="mt-6 ml-8 text-[28px] font-bold text-white">Informasi Admin</h2>
         <!-- Stats Cards -->
         <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
@@ -63,6 +65,8 @@
             </div>
         </div>
 
+        <!-- Title  -->
+        <h2 class="mt-6 ml-8 text-[28px] font-bold text-white">Antrian Tiket</h2>
         <!-- Recent Activity -->
         <div class="p-6">
             <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-700/50 overflow-hidden">
