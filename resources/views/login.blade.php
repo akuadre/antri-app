@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-<div class="min-h-screen flex items-center justify-center p-4">
+<div class="min-h-screen relative flex items-center justify-center p-4">
     <div class="bg-gray-900 text-white rounded-2xl border-4 border-slate-600 shadow-lg shadow-slate-600 w-full max-w-md p-7 space-y-6">
         <!-- Header -->
         <div class="text-center">

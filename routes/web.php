@@ -8,6 +8,11 @@ Route::get('/', function () {
     return redirect()->route('login');
 })->name('home');
 
+// 404 Route
+Route::fallback(function () {
+    return redirect()->route('home');
+});
+
 Route::get('/login', [LoginController::class,'login'])->name('login');
 Route::post('/login', [LoginController::class,'authenticating'])->name('authenticating');
 
