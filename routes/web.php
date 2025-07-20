@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     // return view('users.landing');
     return redirect()->route('login');
-})->name('home');
+})->name('login');
 
 // 404 Route
 Route::fallback(function () {
@@ -23,4 +23,26 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 Route::get('/home', function () {
     return view('admin.home');
-})->middleware('auth');
+})->name('home')->middleware('auth');
+
+Route::get('/antrian', function () {
+    return view('admin.antrian');
+})->name('antrian')->middleware('auth');
+
+Route::get('/dokter', function () {
+    return view('admin.dokter');
+})->name('dokter')->middleware('auth');
+
+Route::get('/poli', function () {
+    return view('admin.poli');
+})->name('poli')->middleware('auth');
+
+// Route::get('/antrian', 'AdminController@antrian');
+// Route::post('/antrian/{id}/panggil', 'AdminController@panggilAntrian');
+// Route::post('/antrian/{id}/selesai', 'AdminController@selesaiAntrian');
+
+// Route::get('/dokter', 'DokterController@index');
+// Route::post('/dokter/tambah', 'DokterController@tambah');
+
+// Route::get('/poli', 'PoliController@index');
+// Route::post('/poli/tambah', 'PoliController@tambah');
