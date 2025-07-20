@@ -30,12 +30,12 @@ class DatabaseSeeder extends Seeder
 
         // Seed Polis
         $polis = [
-            ['name' => 'Poli Umum', 'code' => 'UM'],
-            ['name' => 'Poli Gigi', 'code' => 'GG'],
-            ['name' => 'Poli Anak', 'code' => 'AN'],
-            ['name' => 'Poli Kandungan', 'code' => 'OB'],
-            ['name' => 'Poli Penyakit Dalam', 'code' => 'PD'],
-            ['name' => 'Poli Saraf', 'code' => 'NS'],
+            ['name' => 'Poli Umum', 'code' => 'PU'],
+            ['name' => 'Poli Gigi', 'code' => 'PG'],
+            ['name' => 'Poli Anak', 'code' => 'PA'],
+            ['name' => 'Poli Kandungan', 'code' => 'PK'],
+            ['name' => 'Poli THT', 'code' => 'PT'],
+            ['name' => 'Poli Saraf', 'code' => 'PS'],
         ];
 
         foreach ($polis as $poli) {
