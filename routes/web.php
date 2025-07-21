@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -20,9 +21,7 @@ Route::get('/register', [LoginController::class,'register'])->name('register');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 // Admin Page
-Route::get('/home', function () {
-    return view('admin.home');
-})->name('home')->middleware('auth');
+Route::get('/home', [AdminController::class,'index'])->name('home')->middleware('auth');
 
 Route::get('/antrian', function () {
     return view('admin.antrian');
@@ -40,11 +39,11 @@ Route::get('/poli', function () {
 // Template
 Route::get('/template', function () {
     return view('admin.template1');
-})->name('home')->middleware('auth');
+})->name('template')->middleware('auth');
 
 Route::get('/template2', function () {
     return view('admin.template2');
-})->name('home')->middleware('auth');
+})->name('template2')->middleware('auth');
 
 
 // Later

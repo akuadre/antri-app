@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Relasi ke antrian
+    public function antrians()
+    {
+        return $this->hasMany(Antrian::class, 'pasien_id');
+    }
 }

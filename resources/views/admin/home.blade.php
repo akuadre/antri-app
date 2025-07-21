@@ -29,8 +29,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-400 text-sm">Total Antrian Hari Ini</p>
-                        {{-- <p class="text-3xl font-bold text-white mt-2">{{ $totalAntrian }}</p> --}}
-                        <p class="text-3xl font-bold text-white mt-2">20</p>
+                        <p class="text-3xl font-bold text-white mt-2">{{ $totalAntrian }}</p>
                     </div>
                     <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-list-ol text-blue-400 text-xl"></i>
@@ -42,8 +41,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-400 text-sm">Antrian Selesai</p>
-                        {{-- <p class="text-3xl font-bold text-white mt-2">{{ $selesaiCount }}</p> --}}
-                        <p class="text-3xl font-bold text-white mt-2">4</p>
+                        <p class="text-3xl font-bold text-white mt-2">{{ $selesaiCount }}</p>
                     </div>
                     <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-check-circle text-green-400 text-xl"></i>
@@ -55,8 +53,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-400 text-sm">Total Poli</p>
-                        {{-- <p class="text-3xl font-bold text-white mt-2">{{ $poliCount }}</p> --}}
-                        <p class="text-3xl font-bold text-white mt-2">6</p>
+                        <p class="text-3xl font-bold text-white mt-2">{{ $poliCount }}</p>
                     </div>
                     <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-procedures text-purple-400 text-xl"></i>
@@ -85,27 +82,24 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700/50">
-                            {{-- @foreach($recentAntrian as $antrian) --}}
+                            @foreach($recentAntrian as $antrian)
                             <tr class="hover:bg-gray-700/30">
-                                {{-- <td class="px-6 py-4 text-sm font-medium text-white">{{ $antrian->nomor_antrian }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">PU-001</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->poli->nama_poli }}</td> --}}
-                                <td class="px-6 py-4 text-sm text-gray-300">Poli Umum</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->dokter->nama }}</td> --}}
-                                <td class="px-6 py-4 text-sm text-gray-300">Dr. Tirta</td>
+                                <td class="px-6 py-4 text-sm font-medium text-white">{{ $antrian->nomor_antrian }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->poli->nama_poli }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->dokter->nama }}</td>
                                 <td class="px-6 py-4">
-                                    {{-- @if($antrian->status == 'menunggu') --}}
+                                    @if($antrian->status == 'menunggu')
                                         <span class="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400">Menunggu</span>
-                                    {{-- @elseif($antrian->status == 'diproses') --}}
-                                        {{-- <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">Diproses</span> --}}
-                                    {{-- @else --}}
-                                        {{-- <span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">Selesai</span> --}}
-                                    {{-- @endif --}}
+                                    @elseif($antrian->status == 'diproses')
+                                        <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">Diproses</span>
+                                    @else
+                                        <span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">Selesai</span>
+                                    @endif
                                 </td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->created_at->format('H:i') }}</td> --}}
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->created_at->format('H:i') }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-300">08:30</td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

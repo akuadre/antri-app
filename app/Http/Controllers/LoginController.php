@@ -29,8 +29,7 @@ class LoginController extends Controller
         }
         else
         {
-            $categories = Category::all();
-            return view('register', compact('categories'));
+            return view('register');
         }
     }
 
