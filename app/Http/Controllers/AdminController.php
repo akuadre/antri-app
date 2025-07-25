@@ -18,7 +18,7 @@ class AdminController extends Controller
             ->take(5)
             ->get();
 
-        return view('admin.home', compact(
+        return view('admin.page.dashboard.index', compact(
             'totalAntrian',
             'selesaiCount',
             'poliCount',

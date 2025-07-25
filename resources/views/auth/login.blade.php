@@ -111,7 +111,8 @@
         <div class="text-center">
             <p class="text-sm text-gray-400">
                 Belum punya akun?
-                <a href="{{ route('register') }}" class="text-blue-400 hover:underline">
+                {{-- <a href="{{ route('register') }}" class="text-blue-400 hover:underline"> --}}
+                <a href="#" class="text-blue-400 hover:underline">
                     Daftar di sini
                 </a>
             </p>

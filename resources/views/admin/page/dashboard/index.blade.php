@@ -74,6 +74,7 @@
                     <table class="w-full">
                         <thead class="bg-gray-700/50">
                             <tr>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-300">No</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">No. Antrian</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Poli</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Dokter</th>
@@ -82,11 +83,12 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700/50">
-                            @foreach($recentAntrian as $antrian)
+                            @foreach($recentAntrian as $index => $antrian)
                             <tr class="hover:bg-gray-700/30">
+                                <td class="px-6 py-4 text-sm font-medium text-white text-center">{{ $index + 1 }}</td>
                                 <td class="px-6 py-4 text-sm font-medium text-white">{{ $antrian->nomor_antrian }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->poli->nama_poli }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->dokter->nama }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->poli->name }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->dokter->name }}</td>
                                 <td class="px-6 py-4">
                                     @if($antrian->status == 'menunggu')
                                         <span class="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400">Menunggu</span>
@@ -97,7 +99,6 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->created_at->format('H:i') }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-300">08:30</td>
                             </tr>
                             @endforeach
                         </tbody>

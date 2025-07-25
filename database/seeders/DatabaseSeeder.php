@@ -10,6 +10,7 @@ use App\Models\Dokter;
 use App\Models\Antrian;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -25,7 +26,7 @@ class DatabaseSeeder extends Seeder
         Owner::create([
             'name' => 'Admin Owner',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make('admin'),
         ]);
 
         // Seed Polis
@@ -45,14 +46,16 @@ class DatabaseSeeder extends Seeder
         // Seed Users (Pasien)
         $users = [
             [
-                'name' => 'Ahmad Nur',
+                'name' => 'Adrenalin Muhammad D',
                 'nik' => '3210123456780001',
-                'password' => Hash::make('password'),
+                'nomor' => '088221344022',
+                'password' => Hash::make('adrenalin'),
             ],
             [
-                'name' => 'Dina Lestari',
+                'name' => 'Juang Syahid Al Jihad',
                 'nik' => '3210123456780002',
-                'password' => Hash::make('password'),
+                'nomor' => '08821324421',
+                'password' => Hash::make('juang'),
             ],
         ];
 
@@ -63,20 +66,25 @@ class DatabaseSeeder extends Seeder
         // Seed Dokters
         $dokters = [
             [
-                'name' => 'dr. Rina Sari',
+                'name' => 'dr. Tirta Pengpengpeng',
                 'poli_id' => 1,
-                'start_day' => 'Senin',
-                'end_day' => 'Jumat',
+                'hari_kerja' => 'Jumat',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
             ],
             [
                 'name' => 'drg. Andi Rahman',
                 'poli_id' => 2,
-                'start_day' => 'Selasa',
-                'end_day' => 'Jumat',
+                'hari_kerja' => 'Senin,Selasa,Rabu,Kamis,Jumat,Sabtu',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'dr. Rina Sari',
+                'poli_id' => 3,
+                'hari_kerja' => 'Senin,Selasa,Rabu,Kamis,Jumat',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
             ],
         ];
 
@@ -111,5 +119,19 @@ class DatabaseSeeder extends Seeder
         foreach ($antrians as $antrian) {
             Antrian::create($antrian);
         }
+
+        // Sementara
+
+        // Seed Laporan
+        DB::table('laporan')->insert([
+            'id_user' => 1,
+            'nama_tempat' => 'Cimahi Mall',
+            'alamat' => 'Jl. Cimahi Mall',
+            'foto' => '683401fd0aa79.jpg',
+            'deskripsi' => 'Ada Banyak Sampah',
+            'kategori' => 'Sampah Jalanan',
+            'status' => 'Dikirim',
+            // 'created_at' => now()->toDateString(),
+        ]);
     }
 }

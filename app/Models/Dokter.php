@@ -8,7 +8,7 @@ class Dokter extends Model
 {
     protected $fillable = [
         'name', 'poli_id',
-        'start_day', 'end_day',
+        'hari_kerja',
         'start_time', 'end_time'
     ];
 
@@ -22,11 +22,5 @@ class Dokter extends Model
     public function antrians()
     {
         return $this->hasMany(Antrian::class);
-    }
-
-    // Accessor untuk jadwal
-    public function getJadwalArrayAttribute()
-    {
-        return explode(', ', $this->jadwal);
     }
 }

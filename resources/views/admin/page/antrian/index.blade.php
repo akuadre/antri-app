@@ -22,6 +22,51 @@
             </div>
         </header>
 
+
+        <!-- Title  -->
+        <h2 class="mt-6 ml-8 text-[28px] font-bold text-white">Informasi Admin</h2>
+        <!-- Stats Cards -->
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Antrian Hari Ini</p>
+                        <p class="text-3xl font-bold text-white mt-2">{{ $totalAntrian }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-list-ol text-blue-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 group">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Antrian Selesai Hari Ini</p>
+                        <p class="text-3xl font-bold text-white mt-2">{{ $selesaiCount }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-check-circle text-green-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 group">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-sm">Total Poli</p>
+                        <p class="text-3xl font-bold text-white mt-2">{{ $poliCount }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-procedures text-purple-400 text-xl"></i>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+
+        <!-- Title  -->
+        <h2 class="mt-6 ml-8 text-[28px] font-bold text-white">Data Antrian</h2>
+        <!-- Table Antrian  -->
         <div class="p-6">
             <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-700/50 overflow-hidden">
                 <div class="p-4 border-b border-gray-700/50 flex justify-between items-center">
@@ -37,6 +82,7 @@
                     <table class="w-full">
                         <thead class="bg-gray-700/50">
                             <tr>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-300">No</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">No. Antrian</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Pasien</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Poli</th>
@@ -47,29 +93,25 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700/50">
-                            {{-- @foreach($antrians as $antrian) --}}
+                            @foreach($antrians as $index => $antrian)
                             <tr class="hover:bg-gray-700/30">
-                                {{-- <td class="px-6 py-4 text-sm font-medium text-white">{{ $antrian->nomor_antrian }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">PU-001</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->pasien->nama }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">Angga</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->poli->nama_poli }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">Poli Umum</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->dokter->nama }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">Dr. Tirta</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ Str::limit($antrian->keluhan, 20) }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">Ga Enak Badan Ih</td>
+                                <td class="px-6 py-4 text-center text-sm font-medium text-white">{{ $index + 1 }}</td>
+                                <td class="px-6 py-4 text-sm font-medium text-white">{{ $antrian->nomor_antrian }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->pasien->name }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->poli->name }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $antrian->dokter->name }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ Str::limit($antrian->keluhan, 20) }}</td>
                                 <td class="px-6 py-4">
-                                    {{-- @if($antrian->status == 'menunggu') --}}
+                                    @if($antrian->status == 'menunggu')
                                         <span class="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400">Menunggu</span>
-                                    {{-- @elseif($antrian->status == 'diproses') --}}
-                                        {{-- <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">Diproses</span> --}}
-                                    {{-- @else --}}
-                                        {{-- <span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">Selesai</span> --}}
-                                    {{-- @endif --}}
+                                    @elseif($antrian->status == 'diproses')
+                                        <span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">Diproses</span>
+                                    @else
+                                        <span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">Selesai</span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-300 flex space-x-2">
-                                    {{-- @if($antrian->status == 'menunggu') --}}
+                                    @if($antrian->status == 'menunggu')
                                     {{-- <form action="{{ route('admin.antrian.panggil', $antrian->id) }}" method="POST"> --}}
                                     <form action="" method="POST">
                                         @csrf
@@ -77,9 +119,9 @@
                                             Panggil
                                         </button>
                                     </form>
-                                    {{-- @endif --}}
+                                    @endif
 
-                                    {{-- @if($antrian->status != 'selesai') --}}
+                                    @if($antrian->status != 'selesai')
                                     {{-- <form action="{{ route('admin.antrian.selesai', $antrian->id) }}" method="POST"> --}}
                                     <form action="" method="POST">
                                         @csrf
@@ -87,16 +129,16 @@
                                             Selesai
                                         </button>
                                     </form>
-                                    {{-- @endif --}}
+                                    @endif
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-                <div class="p-4 border-t border-gray-700/50">
-                    {{-- {{ $antrians->links() }} --}}
-                </div>
+                {{-- <div class="p-4 border-t border-gray-700/50">
+                    {{ $antrians->links() }}
+                </div> --}}
             </div>
         </div>
     </div>

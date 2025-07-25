@@ -14,22 +14,22 @@ class LoginController extends Controller
     public function login() {
         if (Auth::check())
         {
-            return redirect('home');
+            return redirect()->route('home');
         }
         else
         {
-            return view('login');
+            return view('auth.login');
         }
     }
 
     public function register() {
         if (Auth::check())
         {
-            return redirect('home');
+            return redirect()->route('home');
         }
         else
         {
-            return view('register');
+            return view('auth.register');
         }
     }
 
@@ -81,6 +81,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('login');
+        return redirect()->route('login');
     }
 }

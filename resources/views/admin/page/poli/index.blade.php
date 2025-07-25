@@ -21,6 +21,9 @@
             </div>
         </header>
 
+        <!-- Title  -->
+        <h2 class="mt-6 ml-8 text-[28px] font-bold text-white">Data Poli</h2>
+        <!-- Table Poli -->
         <div class="p-6">
             <div class="bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-700/50 overflow-hidden">
                 <div class="p-4 border-b border-gray-700/50">
@@ -30,6 +33,7 @@
                     <table class="w-full">
                         <thead class="bg-gray-700/50">
                             <tr>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-300">No</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Nama Poli</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Kode</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-300">Jumlah Dokter</th>
@@ -37,31 +41,33 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700/50">
-                            {{-- @foreach($polis as $poli) --}}
+                            @foreach($polis as $index => $poli)
                             <tr class="hover:bg-gray-700/30">
-                                {{-- <td class="px-6 py-4 text-sm font-medium text-white">{{ $poli->nama_poli }}</td> --}}
-                                <td class="px-6 py-4 text-sm font-medium text-white">Poli Umum</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $poli->kode_poli }}</td> --}}
-                                <td class="px-6 py-4 text-sm text-gray-300">PU</td>
-                                {{-- <td class="px-6 py-4 text-sm text-gray-300">{{ $poli->dokters->count() }}</td> --}}
-                                <td class="px-6 py-4 text-sm text-gray-300">1</td>
+                                <td class="px-6 py-4 text-center text-sm font-medium text-white">{{ $index + 1 }}</td>
+                                <td class="px-6 py-4 text-sm font-medium text-white">{{ $poli->name }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $poli->code }}</td>
+                                <td class="px-6 py-4 text-sm text-gray-300">{{ $poli->dokters->count() }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-300 flex space-x-2">
-                                    {{-- <button onclick="editPoli({{ $poli->id }})" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-500 text-white rounded text-xs"> --}}
-                                    <button onclick="" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-500 text-white rounded text-xs">
+                                    <button onclick="editPoli({{ $poli->id }})" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-500 text-white rounded text-xs">
                                         Edit
                                     </button>
-                                    {{-- @if($poli->dokters->count() == 0) --}}
+                                    @if($poli->dokters->count() == 0)
                                     {{-- <form action="{{ route('admin.poli.hapus', $poli->id) }}" method="POST"> --}}
-                                        {{-- @csrf --}}
-                                        {{-- @method('DELETE') --}}
+                                    <form action="" method="POST">
+                                        @csrf
+                                        @method('DELETE')
                                         <button type="submit" class="px-3 py-1 bg-red-600 hover:bg-red-500 text-white rounded text-xs">
                                             Hapus
                                         </button>
-                                    {{-- </form> --}}
-                                    {{-- @endif --}}
+                                    </form>
+                                    @else
+                                    <button class="cursor-none px-3 py-1 bg-red-800/40 text-white rounded text-xs" disabled>
+                                        Hapus
+                                    </button>
+                                    @endif
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
