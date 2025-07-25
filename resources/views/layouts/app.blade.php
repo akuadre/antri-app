@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="light">
 <head>
     <title>@yield('title', 'Antrian')</title>
     <meta charset="UTF-8">
@@ -9,15 +9,17 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* body {
-            background: linear-gradient(to bottom right, #000000, #1e293b);
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-size: cover;
-        } */
-    </style>
     <script>
+        // Check for saved theme preference or use system preference
+        const storedTheme = localStorage.getItem('theme') ||
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        // Apply the theme
+        if (storedTheme) {
+            document.documentElement.classList.add(storedTheme);
+            document.documentElement.classList.remove(storedTheme === 'dark' ? 'light' : 'dark');
+        }
+
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -73,20 +75,18 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-white min-h-screen overflow-x-hidden">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white min-h-screen overflow-x-hidden">
     <!-- Animated Background -->
     <div class="fixed inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/30"></div>
-        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
-        <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
-        <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-green-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -6s;"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-blue-50/20 to-purple-50/30 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/30"></div>
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-green-200/20 dark:bg-green-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -6s;"></div>
     </div>
 
     @yield('content')
 
     <script src="{{ asset('js/script.js') }}"></script>
-
-    <!-- Alpine.js for interactivity -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </body>
 </html>
