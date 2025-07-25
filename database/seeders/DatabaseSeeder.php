@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
         // Seed Antrian
         $antrians = [
             [
-                'nomor_antrian' => 'UM-001',
+                'nomor_antrian' => 'PU-001',
                 'pasien_id' => 1,
                 'poli_id' => 1,
                 'dokter_id' => 1,
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
                 'status' => 'menunggu'
             ],
             [
-                'nomor_antrian' => 'GG-001',
+                'nomor_antrian' => 'PG-001',
                 'pasien_id' => 2,
                 'poli_id' => 2,
                 'dokter_id' => 2,
