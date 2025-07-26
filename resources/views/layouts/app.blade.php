@@ -151,6 +151,91 @@
                 });
             @endif
         });
+
+        // Confirmation for Panggil action
+        function confirmPanggil(event, antrianId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi Panggil Antrian',
+                text: "Apakah Anda yakin ingin memanggil antrian ini?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'Ya, Panggil',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('panggilForm' + antrianId).submit();
+                }
+            });
+        }
+
+        // Confirmation for Selesai action
+        function confirmSelesai(event, antrianId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi Selesaikan Antrian',
+                text: "Apakah Anda yakin ingin menyelesaikan antrian ini?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#10b981',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'Ya, Selesaikan',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('selesaiForm' + antrianId).submit();
+                }
+            });
+        }
+
+        // Confirmation for Hapus action
+        function confirmHapusDokter(event, dokterId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Hapus Dokter?',
+                text: "Data dokter akan dihapus permanen!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444', // Red-500
+                cancelButtonColor: '#6b7280', // Gray-500
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937',
+                iconColor: '#ef4444' // Red-500
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('hapusDokterForm' + dokterId).submit();
+                }
+            });
+        }
+        
+        function confirmHapusPoli(event, poliId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Hapus Poli?',
+                text: "Semua data terkait poli ini juga akan terhapus!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#8b5cf6', // Purple-400
+                cancelButtonColor: '#6b7280', // Gray-500
+                confirmButtonText: 'Ya, Hapus',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937',
+                iconColor: '#8b5cf6' // Purple-400
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('hapusPoliForm' + poliId).submit();
+                }
+            });
+        }
     </script>
 </body>
 </html>

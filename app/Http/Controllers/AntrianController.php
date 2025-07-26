@@ -15,7 +15,7 @@ class AntrianController extends Controller
             ->whereDate('created_at', today())
             ->orderBy('status')
             ->orderBy('created_at')
-            ->get();
+            ->paginate(10);
         $totalAntrian = Antrian::whereDate('tanggal', today())->count();
         $selesaiCount = Antrian::whereDate('tanggal', today())->where('status', 'selesai')->count();
 

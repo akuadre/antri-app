@@ -10,10 +10,50 @@ class DokterController extends Controller
 {
     public function index()
     {
-        $dokters = Dokter::with('poli')->latest()->get();
-        $polis = Poli::all();
-        return view('admin.page.dokter.index', compact('dokters', 'polis'));
+        $dokters = Dokter::with(['poli', 'antrians'])
+                    ->withCount('antrians')
+                    ->orderBy('antrians_count', 'desc')
+                    ->paginate(10);
+
+        $mostActiveDokter = Dokter::withCount('antrians')
+                            ->orderBy('antrians_count', 'desc')
+                            ->first();
+
+        $mostPopularPoli = Poli::withCount('dokters')
+                        ->orderBy('dokters_count', 'desc')
+                        ->first();
+
+        $polis = Poli::withCount('dokters')
+                ->orderBy('dokters_count', 'desc')
+                ->get();
+
+        $recentActivities = [
+            [
+                'icon' => 'user-md',
+                'message' => 'Dr. '.($dokters->first()->name ?? 'Baru').' ditambahkan',
+                'time' => now()->subHours(2)->diffForHumans()
+            ],
+            [
+                'icon' => 'calendar-check',
+                'message' => 'Jadwal dokter diperbarui',
+                'time' => now()->subDays(1)->diffForHumans()
+            ],
+            [
+                'icon' => 'stethoscope',
+                'message' => 'Antrian baru diproses',
+                'time' => now()->subHours(5)->diffForHumans()
+            ]
+        ];
+
+        return view('admin.page.dokter.index', compact(
+            'dokters',
+            'mostActiveDokter',
+            'mostPopularPoli',
+            'recentActivities',
+            'polis'
+        ));
     }
+
 
     public function store(Request $request)
     {
