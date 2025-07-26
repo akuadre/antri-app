@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Antrian;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -25,5 +26,10 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('antrians')) {
             View::share('antrianCount', Antrian::count());
         }
+
+        // Route sidebar
+        View::share('currentRoute', Route::currentRouteName() ?? request()->path());
+
+
     }
 }

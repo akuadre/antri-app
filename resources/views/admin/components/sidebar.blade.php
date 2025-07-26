@@ -1,7 +1,3 @@
-@php
-    $currentRoute = Route::currentRouteName() ?? request()->path();
-@endphp
-
 <div class="w-64 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-r border-gray-200 dark:border-gray-700/50 p-6 flex flex-col sticky top-0 h-screen">
     <!-- Logo -->
     <div class="flex items-center space-x-3 mb-8">
