@@ -125,6 +125,25 @@
                 });
             @endif
 
+            @if ($errors->any())
+                let errorMessages = `
+                    @foreach ($errors->all() as $error)
+                        - {{ $error }} <br>
+                    @endforeach
+                `;
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Validasi Gagal',
+                    html: errorMessages,
+                    timer: 4000,
+                    showConfirmButton: false,
+                    background: '{{ session('theme') === 'dark' ? '#1f2937' : '#ffffff' }}',
+                    color: '{{ session('theme') === 'dark' ? '#ffffff' : '#1f2937' }}'
+                });
+            @endif
+
+
             // Warning message
             @if(session('warning'))
                 Swal.fire({
@@ -215,7 +234,7 @@
                 }
             });
         }
-        
+
         function confirmHapusPoli(event, poliId) {
             event.preventDefault();
             Swal.fire({

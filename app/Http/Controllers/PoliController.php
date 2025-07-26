@@ -48,31 +48,36 @@ class PoliController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_poli' => 'required|string|max:255',
-            'kode_poli' => 'required|string|max:10|unique:polis,code'
+            'nama' => 'required|string|max:255',
+            'kode' => 'required|string|max:10|unique:polis,code'
         ]);
 
         Poli::create([
-            'name' => $request->nama_poli,
-            'code' => $request->kode_poli
+            'name' => $request->nama,
+            'code' => $request->kode
         ]);
 
-        return redirect()->route('poli.index')->with('success', 'Poli berhasil ditambahkan');
+        return redirect()->route('poli')->with('success', 'Poli berhasil ditambahkan');
     }
 
-    public function update(Request $request, Poli $poli)
+    public function update(Request $request, $id)
     {
+        $poli = Poli::findOrFail($id);
+        if (!$poli) {
+            return redirect()->back()->with('error', 'Data poli tidak ditemukan!');
+        }
+
         $request->validate([
-            'nama_poli' => 'required|string|max:255',
-            'kode_poli' => 'required|string|max:10|unique:polis,code,'.$poli->id
+            'nama' => 'required|string|max:255',
+            'kode' => 'required|string|max:10|unique:polis,code,'.$poli->id
         ]);
 
         $poli->update([
-            'name' => $request->nama_poli,
-            'code' => $request->kode_poli
+            'name' => $request->nama,
+            'code' => $request->kode
         ]);
 
-        return redirect()->route('poli.index')->with('success', 'Poli berhasil diperbarui');
+        return redirect()->route('poli')->with('success', 'Poli berhasil diperbarui');
     }
 
     public function destroy(Poli $poli)
@@ -82,6 +87,6 @@ class PoliController extends Controller
         }
 
         $poli->delete();
-        return redirect()->route('poli.index')->with('success', 'Poli berhasil dihapus');
+        return redirect()->route('poli')->with('success', 'Poli berhasil dihapus');
     }
 }

@@ -196,13 +196,13 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Nama Poli</label>
-                        <input type="text" name="nama_poli" x-model="formData.name" required
+                        <input type="text" name="nama" x-model="formData.name" required
                                class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600/50 rounded-lg text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20" placeholder="Masukkan Nama Poli">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Kode Poli</label>
-                        <input type="text" name="kode_poli" x-model="formData.code" required
+                        <input type="text" name="kode" x-model="formData.code" required
                                class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600/50 rounded-lg text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20" placeholder="Masukkan Kode Poli">
                     </div>
                 </div>
