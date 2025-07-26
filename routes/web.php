@@ -8,8 +8,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliController;
 
 Route::get('/', function () {
-    return redirect()->route('login');
-})->name('login');
+    // return redirect()->route('login');
+    return view('landing');
+})->name('home');
 
 // 404 Route
 Route::fallback(function () {
@@ -25,7 +26,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 // Admin Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AdminController::class,'index'])->name('home');
-    
+
     // Antrian Routes
     Route::prefix('antrian')->group(function () {
         Route::get('/', [AntrianController::class, 'index'])->name('antrian');
