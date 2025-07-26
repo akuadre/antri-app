@@ -7,8 +7,6 @@
     @include('admin.components.sidebar')
 
     <!-- Main Content -->
-
-
     <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
         <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20">
             <div class="flex items-center justify-between">
@@ -135,7 +133,7 @@
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300 flex space-x-2">
-                                    <button @click="editDokter({{ $dokter->id }})" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-500 text-white rounded text-xs">
+                                    <button @click="editDokter({{ json_encode($dokter) }})" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-500 text-white rounded text-xs">
                                         Edit
                                     </button>
                                     <form action="{{ route('dokter.destroy', $dokter->id) }}" id="hapusDokterForm{{ $dokter->id }}" method="POST">
@@ -253,12 +251,29 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Hari Praktek</label>
                         <div class="grid grid-cols-2 gap-2">
-                            @foreach(['senin', 'jumat', 'selasa', 'sabtu', 'rabu', 'minggu', 'kamis'] as $day)
+                            @php
+                                $days = [
+                                    'senin' => 'Senin',
+                                    'selasa' => 'Selasa',
+                                    'rabu' => 'Rabu',
+                                    'kamis' => 'Kamis',
+                                    'jumat' => 'Jumat',
+                                    'sabtu' => 'Sabtu',
+                                    'minggu' => 'Minggu'
+                                ];
+                            @endphp
+
+                            @foreach($days as $key => $day)
                             <div class="flex items-center">
-                                <input type="checkbox" name="start_day[]" id="day_{{ $day }}" value="{{ $day }}"
-                                       x-model="formData.start_day"
-                                       class="rounded border-gray-300 dark:border-gray-600 text-blue-500 focus:ring-blue-500">
-                                <label for="day_{{ $day }}" class="ml-2 text-sm text-gray-600 dark:text-gray-300 capitalize">{{ $day }}</label>
+                                <input
+                                    type="checkbox"
+                                    name="hari_kerja[]"
+                                    id="day_{{ $key }}"
+                                    value="{{ $key }}"
+                                    x-model="formData.hari_kerja"
+                                    class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700"
+                                >
+                                <label for="day_{{ $key }}" class="ml-2 text-sm text-gray-700 dark:text-gray-300">{{ $day }}</label>
                             </div>
                             @endforeach
                         </div>
@@ -304,7 +319,7 @@ document.addEventListener('alpine:init', () => {
             id: '',
             nama: '',
             poli_id: '',
-            start_day: [],
+            hari_kerja: [],
             start_time: '08:00',
             end_time: '15:00'
         },
@@ -326,33 +341,31 @@ document.addEventListener('alpine:init', () => {
                 id: '',
                 nama: '',
                 poli_id: '',
-                start_day: [],
+                hari_kerja: [],
                 start_time: '08:00',
                 end_time: '15:00'
             };
         },
 
-        async editDokter(id) {
-            try {
-                const response = await fetch(`/dokter/edit/${id}`);
-                const data = await response.json();
+        editDokter(dokter) {
+            this.isOpen = true;
+            this.isEditMode = true;
+            this.modalTitle = 'Edit Dokter';
+            this.formAction = `/dokter/update/${dokter.id}`;
 
-                this.isOpen = true;
-                this.isEditMode = true;
-                this.modalTitle = 'Edit Dokter';
-                this.formAction = `/dokter/update/${id}`;
+            // Konversi string hari kerja ke array
+            const hariKerja = typeof dokter.hari_kerja === 'string'
+                ? dokter.hari_kerja.split(',').map(day => day.trim().toLowerCase())
+                : [];
 
-                this.formData = {
-                    id: data.id,
-                    nama: data.nama,
-                    poli_id: data.poli_id,
-                    start_day: data.start_day ? data.start_day.split(',') : [],
-                    start_time: data.start_time,
-                    end_time: data.end_time
-                };
-            } catch (error) {
-                console.error('Error:', error);
-            }
+            this.formData = {
+                id: dokter.id,
+                nama: dokter.name,
+                poli_id: dokter.poli_id,
+                hari_kerja: hariKerja,
+                start_time: dokter.start_time.substring(0, 5), // Format HH:MM
+                end_time: dokter.end_time.substring(0, 5)     // Format HH:MM
+            };
         }
     }));
 });

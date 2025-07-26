@@ -89,18 +89,30 @@ class DokterController extends Controller
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'poli_id' => 'required|exists:polis,id',
-            'start_day' => 'required|array',
-            'start_day.*' => 'in:senin,selasa,rabu,kamis,jumat,sabtu,minggu',
+            'hari_kerja' => 'required|array',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
         ]);
 
+
+        $orderedDays = collect($request->hari_kerja)->sortBy(function ($day) {
+            $dayOrder = [
+                'senin' => 1,
+                'selasa' => 2,
+                'rabu' => 3,
+                'kamis' => 4,
+                'jumat' => 5,
+                'sabtu' => 6,
+                'minggu' => 7
+            ];
+            return $dayOrder[$day] ?? 8; // Jika tidak ada dalam mapping, taruh di akhir
+        })->values()->all();
+
         $dokter = Dokter::findOrFail($id);
         $dokter->update([
-            'nama' => $request->nama,
+            'name' => $request->nama,
             'poli_id' => $request->poli_id,
-            'start_day' => implode(',', $request->start_day),
-            'end_day' => implode(',', $request->start_day),
+            'hari_kerja' => implode(',', $orderedDays),
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
         ]);
