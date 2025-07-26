@@ -8,6 +8,9 @@
     <link rel="icon" href="{{ asset('images/search.png') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Check for saved theme preference or use system preference
@@ -86,7 +89,68 @@
 
     @yield('content')
 
+
+    <!-- Script -->
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SweetAlert Notifications -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Success message
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: '{{ session('success') }}',
+                    timer: 3000,
+                    showConfirmButton: false,
+                    background: '{{ session('theme') === 'dark' ? '#1f2937' : '#ffffff' }}',
+                    color: '{{ session('theme') === 'dark' ? '#ffffff' : '#1f2937' }}'
+                });
+            @endif
+
+            // Error message
+            @if(session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: '{{ session('error') }}',
+                    timer: 3000,
+                    showConfirmButton: false,
+                    background: '{{ session('theme') === 'dark' ? '#1f2937' : '#ffffff' }}',
+                    color: '{{ session('theme') === 'dark' ? '#ffffff' : '#1f2937' }}'
+                });
+            @endif
+
+            // Warning message
+            @if(session('warning'))
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Peringatan',
+                    text: '{{ session('warning') }}',
+                    timer: 3000,
+                    showConfirmButton: false,
+                    background: '{{ session('theme') === 'dark' ? '#1f2937' : '#ffffff' }}',
+                    color: '{{ session('theme') === 'dark' ? '#ffffff' : '#1f2937' }}'
+                });
+            @endif
+
+            // Info message
+            @if(session('info'))
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Informasi',
+                    text: '{{ session('info') }}',
+                    timer: 3000,
+                    showConfirmButton: false,
+                    background: '{{ session('theme') === 'dark' ? '#1f2937' : '#ffffff' }}',
+                    color: '{{ session('theme') === 'dark' ? '#ffffff' : '#1f2937' }}'
+                });
+            @endif
+        });
+    </script>
 </body>
 </html>

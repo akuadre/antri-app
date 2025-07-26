@@ -8,7 +8,8 @@ use App\Models\Poli;
 use Illuminate\Http\Request;
 
 class AntrianController extends Controller
-{public function index()
+{
+    public function index()
     {
         $antrians = Antrian::with(['pasien', 'poli', 'dokter'])
             ->whereDate('created_at', today())
@@ -85,8 +86,8 @@ class AntrianController extends Controller
     {
         $antrian = Antrian::findOrFail($id);
         $antrian->update([
-            'status' => 'dipanggil',
-            'waktu_panggil' => now()
+            'status' => 'diproses',
+            // 'waktu_panggil' => now()
         ]);
 
         return redirect()->route('antrian')->with('success', 'Antrian berhasil dipanggil');
@@ -102,6 +103,7 @@ class AntrianController extends Controller
 
         return redirect()->route('antrian')->with('success', 'Antrian ditandai selesai');
     }
+
     public function batalkan($id)
     {
         $antrian = Antrian::findOrFail($id);

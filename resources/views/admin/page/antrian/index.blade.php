@@ -103,18 +103,18 @@
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300 flex space-x-2">
                                     @if($antrian->status == 'menunggu')
-                                    <form action="{{ route('antrian.panggil', $antrian->id) }}" method="POST">
+                                    <form action="{{ route('antrian.panggil', $antrian->id) }}" id="panggilForm{{$antrian->id}}" method="POST">
                                         @csrf
-                                        <button type="submit" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs">
+                                        <button type="submit" onclick="confirmPanggil(event, {{ $antrian->id }})" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs">
                                             Panggil
                                         </button>
                                     </form>
                                     @endif
 
-                                    @if($antrian->status != 'selesai')
-                                    <form action="{{ route('antrian.selesai', $antrian->id) }}" method="POST">
+                                    @if($antrian->status == 'diproses')
+                                    <form action="{{ route('antrian.selesai', $antrian->id) }}" id="selesaiForm{{$antrian->id}}" method="POST">
                                         @csrf
-                                        <button type="submit" class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white rounded text-xs">
+                                        <button type="submit" onclick="confirmSelesai(event, {{ $antrian->id }})" class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white rounded text-xs">
                                             Selesai
                                         </button>
                                     </form>
@@ -129,4 +129,48 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Confirmation for Panggil action
+    function confirmPanggil(event, antrianId) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Konfirmasi Panggil Antrian',
+            text: "Apakah Anda yakin ingin memanggil antrian ini?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3b82f6',
+            cancelButtonColor: '#6b7280',
+            confirmButtonText: 'Ya, Panggil',
+            cancelButtonText: 'Batal',
+            background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+            color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('panggilForm' + antrianId).submit();
+            }
+        });
+    }
+
+    // Confirmation for Selesai action
+    function confirmSelesai(event, antrianId) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Konfirmasi Selesaikan Antrian',
+            text: "Apakah Anda yakin ingin menyelesaikan antrian ini?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#10b981',
+            cancelButtonColor: '#6b7280',
+            confirmButtonText: 'Ya, Selesaikan',
+            cancelButtonText: 'Batal',
+            background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+            color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('selesaiForm' + antrianId).submit();
+            }
+        });
+    }
+</script>
 @endsection
