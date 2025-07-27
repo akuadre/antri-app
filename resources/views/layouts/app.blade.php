@@ -255,6 +255,46 @@
                 }
             });
         }
+
+        function confirmPanggil(event, antrianId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi Panggil Antrian',
+                text: "Apakah Anda yakin ingin memanggil antrian ini?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'Ya, Panggil',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('panggilForm' + antrianId).submit();
+                }
+            });
+        }
+
+        function confirmSelesai(event, antrianId) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi Selesaikan Antrian',
+                text: "Apakah Anda yakin ingin menyelesaikan antrian ini?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#10b981',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'Ya, Selesaikan',
+                cancelButtonText: 'Batal',
+                background: document.documentElement.classList.contains('dark') ? '#1f2937' : '#ffffff',
+                color: document.documentElement.classList.contains('dark') ? '#ffffff' : '#1f2937'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('selesaiForm' + antrianId).submit();
+                }
+            });
+        }
     </script>
 </body>
 </html>

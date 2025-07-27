@@ -19,7 +19,13 @@ class AntrianController extends Controller
         $totalAntrian = Antrian::whereDate('tanggal', today())->count();
         $selesaiCount = Antrian::whereDate('tanggal', today())->where('status', 'selesai')->count();
 
-        $polis = Poli::all();
+        // Get all polis with their today's queues
+        $polis = Poli::with(['antrians' => function($query) {
+            $query->whereDate('tanggal', today())
+                ->with(['pasien', 'dokter'])
+                ->orderBy('status')
+                ->orderBy('created_at');
+        }])->get();
         $dokters = Dokter::all();
 
         return view('admin.page.antrian.index', compact('antrians', 'polis', 'dokters', 'totalAntrian', 'selesaiCount'));

@@ -39,9 +39,9 @@
             </nav>
 
             <div class="flex items-center space-x-4">
-                <button class="hidden md:inline-flex px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-colors">
+                <a href ="{{ route('login') }}" class="hidden md:inline-flex px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-colors">
                     Sign In
-                </button>
+                </a>
                 <button class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-md transition-all">
                     Start Free Trial
                 </button>
