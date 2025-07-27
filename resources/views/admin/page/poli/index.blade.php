@@ -13,20 +13,32 @@
                     <p class="text-gray-600 dark:text-gray-400">Manajemen data poli klinik</p>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button @click="openModal()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg font-medium transition-all duration-300 flex items-center space-x-2">
-                        <i class="fas fa-plus"></i>
-                        <span>Tambah Poli</span>
-                    </button>
-                    <button onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:inline"></i>
+                    <span class="text-sm text-gray-500 dark:text-gray-300">{{ now()->format('l, d F Y') }}</span>
+                    <!-- Toggle Theme Switch -->
+                    <button onclick="toggleTheme()" class="group relative w-16 h-9 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 transition-all duration-500 focus:outline-none">
+                        <!-- Toggle Circle -->
+                        <div id="toggle-circle" class="absolute top-1 left-1 w-7 h-7 rounded-full shadow-md transform transition-all duration-200 bg-white dark:bg-gray-300 translate-x-0 dark:translate-x-7 group-hover:translate-x-[3px] dark:group-hover:translate-x-[25px]">
+                        </div>
+
+                        <!-- Icon Light -->
+                        <span class="absolute left-1 text-yellow-500 hidden dark:inline text-md z-10 [text-shadow:0_0_8px_rgba(255,255,255,0.4)]">☀️</span>
+
+                        <!-- Icon Dark -->
+                        <span class="absolute right-1 text-gray-200 dark:hidden text-md z-10 [text-shadow:0_0_8px_rgba(0,0,0,0.7)]">🌙</span>
                     </button>
                 </div>
             </div>
         </header>
 
+
         <!-- Title  -->
-        <h2 class="mt-6 px-6 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Antrian</h2>
+        <div class="mt-6 px-6 flex justify-between">
+            <h2 class="text-[28px] font-bold text-gray-800 dark:text-white">Informasi Antrian</h2>
+            <button @click="openModal()" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white rounded-lg font-medium transition-all duration-300 flex items-center space-x-2">
+                <i class="fas fa-plus"></i>
+                <span>Tambah Dokter</span>
+            </button>
+        </div>
         <!-- Statistik -->
         <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 group">

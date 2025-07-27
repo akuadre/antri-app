@@ -15,6 +15,7 @@
                     <p class="text-gray-600 dark:text-gray-400">Manajemen antrian pasien</p>
                 </div>
                 <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500 dark:text-gray-300">{{ now()->format('l, d F Y') }}</span>
                     <!-- Toggle Theme Switch -->
                     <button onclick="toggleTheme()" class="group relative w-16 h-9 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 transition-all duration-500 focus:outline-none">
                         <!-- Toggle Circle -->
