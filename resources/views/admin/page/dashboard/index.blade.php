@@ -7,9 +7,9 @@
     @include('admin.components.sidebar')
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
         <!-- Top Header -->
-        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20">
+        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20 transition-colors duration-300">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Dashboard Admin</h1>
@@ -26,7 +26,7 @@
         </header>
 
         <!-- Title  -->
-        <h2 class="mt-6 ml-8 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Admin</h2>
+        <h2 class="mt-6 px-6 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Admin</h2>
         <!-- Stats Cards -->
         <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 group">
@@ -67,7 +67,7 @@
         </div>
 
         <!-- Title  -->
-        <h2 class="mt-6 ml-8 text-[28px] font-bold text-gray-800 dark:text-white">Antrian Tiket</h2>
+        <h2 class="px-6 text-[28px] font-bold text-gray-800 dark:text-white">Antrian Tiket</h2>
         <!-- Recent Activity -->
         <div class="p-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 overflow-hidden">

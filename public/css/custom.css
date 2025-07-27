@@ -8,3 +8,16 @@ input:-webkit-autofill {
 
 /* Fix bug modal  */
 [x-cloak] { display: none !important; }
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

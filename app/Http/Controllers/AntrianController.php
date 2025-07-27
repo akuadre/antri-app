@@ -17,6 +17,9 @@ class AntrianController extends Controller
             ->orderBy('created_at')
             ->paginate(10);
         $totalAntrian = Antrian::whereDate('tanggal', today())->count();
+
+        $prosesCount = Antrian::where('status', 'diproses')->count();
+        $menungguCount = Antrian::where('status', 'menunggu')->count();
         $selesaiCount = Antrian::whereDate('tanggal', today())->where('status', 'selesai')->count();
 
         // Get all polis with their today's queues
@@ -28,7 +31,7 @@ class AntrianController extends Controller
         }])->get();
         $dokters = Dokter::all();
 
-        return view('admin.page.antrian.index', compact('antrians', 'polis', 'dokters', 'totalAntrian', 'selesaiCount'));
+        return view('admin.page.antrian.index', compact('antrians', 'polis', 'dokters', 'totalAntrian', 'selesaiCount', 'prosesCount', 'menungguCount'));
     }
 
     public function store(Request $request)

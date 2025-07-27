@@ -5,8 +5,8 @@
 <div class="relative z-10 flex min-h-screen" x-data="poliModal()">
     @include('admin.components.sidebar')
 
-    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
-        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20">
+    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20 transition-colors duration-300">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Poli</h1>
@@ -25,7 +25,10 @@
             </div>
         </header>
 
-        <div class="px-6 pt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Title  -->
+        <h2 class="mt-6 px-6 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Antrian</h2>
+        <!-- Statistik -->
+        <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
@@ -63,8 +66,9 @@
             </div>
         </div>
 
+        <!-- Title Data -->
         <div class="px-6 pt-2 flex justify-between items-center">
-            <h2 class="text-[28px] font-bold text-gray-800 dark:text-white">Data Poli</h2>
+            <h2 class="text-[28px] font-bold text-gray-800 dark:text-white">Pengelolaan Data Poli</h2>
             <div class="flex items-center space-x-2">
                 <div class="relative">
                     <input type="text" placeholder="Cari poli..." class="bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600/50 rounded-lg px-4 py-2 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-sm">

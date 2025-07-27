@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         // Seed Admin
         Owner::create([
             'name' => 'Admin Owner',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@puskesmas.id',
             'password' => Hash::make('admin'),
         ]);
 
@@ -46,14 +46,14 @@ class DatabaseSeeder extends Seeder
         // Seed Users (Pasien)
         $users = [
             [
-                'name' => 'Adrenalin Muhammad D',
-                'nik' => '3210123456780001',
+                'name' => 'Adrenalin Muhammad Dewangga',
+                'nik' => '34120250001',
                 'nomor' => '088221344022',
                 'password' => Hash::make('adrenalin'),
             ],
             [
                 'name' => 'Juang Syahid Al Jihad',
-                'nik' => '3210123456780002',
+                'nik' => '34120250002',
                 'nomor' => '08821324421',
                 'password' => Hash::make('juang'),
             ],
@@ -68,21 +68,21 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'dr. Tirta Pengpengpeng',
                 'poli_id' => 1,
-                'hari_kerja' => 'Jumat',
+                'hari_kerja' => 'jumat',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
             ],
             [
                 'name' => 'drg. Andi Rahman',
                 'poli_id' => 2,
-                'hari_kerja' => 'Senin,Selasa,Rabu,Kamis,Jumat,Sabtu',
+                'hari_kerja' => 'senin,selasa,rabu,kamis,jumat,sabtu',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
             ],
             [
                 'name' => 'dr. Rina Sari',
                 'poli_id' => 3,
-                'hari_kerja' => 'Senin,Selasa,Rabu,Kamis,Jumat',
+                'hari_kerja' => 'senin,selasa,rabu,kamis,jumat',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
             ],

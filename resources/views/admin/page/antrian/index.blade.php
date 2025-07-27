@@ -7,24 +7,34 @@
     @include('admin.components.sidebar')
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
-        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20">
+    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20 transition-colors duration-300">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Antrian</h1>
                     <p class="text-gray-600 dark:text-gray-400">Manajemen antrian pasien</p>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="toggleTheme()" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:inline"></i>
+                    <!-- Toggle Theme Switch -->
+                    <button onclick="toggleTheme()" class="group relative w-16 h-9 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 transition-all duration-500 focus:outline-none">
+                        <!-- Toggle Circle -->
+                        <div id="toggle-circle" class="absolute top-1 left-1 w-7 h-7 rounded-full shadow-md transform transition-all duration-200 bg-white dark:bg-gray-300 translate-x-0 dark:translate-x-7 group-hover:translate-x-[3px] dark:group-hover:translate-x-[25px]">
+                        </div>
+
+                        <!-- Icon Light -->
+                        <span class="absolute left-1 text-yellow-500 hidden dark:inline text-md z-10 [text-shadow:0_0_8px_rgba(255,255,255,0.4)]">☀️</span>
+
+                        <!-- Icon Dark -->
+                        <span class="absolute right-1 text-gray-200 dark:hidden text-md z-10 [text-shadow:0_0_8px_rgba(0,0,0,0.7)]">🌙</span>
                     </button>
                 </div>
             </div>
         </header>
 
+        <!-- Title  -->
+        <h2 class="mt-6 px-6 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Antrian</h2>
         <!-- Statistik -->
-        <div class="px-6 pt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
@@ -49,34 +59,59 @@
                 </div>
             </div>
 
+            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-yellow-300 dark:hover:border-yellow-500/50 transition-all duration-300 group">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">Diproses</p>
+                        <p class="text-3xl font-bold text-gray-800 dark:text-white mt-2">{{ $prosesCount }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-stethoscope text-yellow-500 dark:text-yellow-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-purple-300 dark:hover:border-purple-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-600 dark:text-gray-400 text-sm">Menunggu</p>
-                        <p class="text-3xl font-bold text-gray-800 dark:text-white mt-2">{{ $totalAntrian - $selesaiCount }}</p>
+                        <p class="text-3xl font-bold text-gray-800 dark:text-white mt-2">{{ $menungguCount }}</p>
                     </div>
                     <div class="w-12 h-12 bg-purple-100 dark:bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-clock text-purple-500 dark:text-purple-400 text-xl"></i>
+                        <i class="fas fa-hourglass-half text-purple-500 dark:text-purple-400 text-xl"></i>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Data Antrian Card View -->
+        <!-- Title Data -->
         <div class="px-6 pt-2 flex justify-between items-center">
             <h2 class="text-[28px] font-bold text-gray-800 dark:text-white">Antrian Per Poli</h2>
             <div class="flex items-center space-x-2">
-                <button onclick="window.location.reload()" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm flex items-center space-x-1">
+                <button onclick="window.location.reload()" class="px-3 py-2 bg-emerald-500 hover:bg-emerald-400 text-white rounded-lg text-sm flex items-center space-x-1 transition duration-300">
                     <i class="fas fa-sync-alt text-sm"></i>
                     <span>Refresh</span>
                 </button>
             </div>
         </div>
 
+        <!-- Data Antrian Card View -->
         <div class="p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($polis as $poli)
                     @php
+                        $colorMap = [
+                            'PU' => 'blue',
+                            'PG' => 'rose',
+                            'PA' => 'green',
+                            'PK'  => 'purple',
+                            'PT' => 'yellow',
+                            'PS' => 'stone',
+                            'lainnya' => 'gray',
+                        ];
+
+                        $color = $colorMap[strtoupper($poli->code)] ?? 'slate'; // default fallback
+
                         // Get today's queues for this poli
                         $todayQueues = $antrians->filter(function($antrian) use ($poli) {
                             return $antrian->poli_id == $poli->id;
@@ -87,13 +122,13 @@
                         $completedToday = $todayQueues->where('status', 'selesai')->count();
                     @endphp
 
-                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 p-6 hover:shadow-lg transition-all duration-300">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl border border-gray-200 flex flex-col justify-around dark:border-gray-700/50 p-6 hover:shadow-lg hover:border-{{ $color }}-400 dark:hover:border-{{ $color }}-500 transition-all duration-300">
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <h3 class="text-lg font-bold text-gray-800 dark:text-white">{{ $poli->name }}</h3>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">{{ $completedToday }} selesai hari ini</p>
                             </div>
-                            <span class="px-2 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400">
+                            <span class="px-2 py-1 text-xs rounded-full bg-{{ $color }}-100 dark:bg-{{ $color }}-500/20 text-{{ $color }}-600 dark:text-{{ $color }}-400">
                                 {{ $poli->code }}
                             </span>
                         </div>
@@ -110,7 +145,7 @@
                                     </div>
                                     <form action="{{ route('antrian.selesai', $currentAntrian->id) }}" method="POST">
                                         @csrf
-                                        <button type="submit" onclick="confirmSelesai(event, {{ $currentAntrian->id }})" class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white rounded text-xs">
+                                        <button type="submit" onclick="confirmSelesai(event, {{ $currentAntrian->id }})" class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white rounded text-xs transition duration-300">
                                             Selesai
                                         </button>
                                     </form>
@@ -131,7 +166,7 @@
                                     </div>
                                     <form action="{{ route('antrian.panggil', $nextAntrian->id) }}" method="POST">
                                         @csrf
-                                        <button type="submit" onclick="confirmPanggil(event, {{ $nextAntrian->id }})" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs">
+                                        <button type="submit" onclick="confirmPanggil(event, {{ $nextAntrian->id }})" class="px-3 py-1 bg-{{ $color }}-600 hover:bg-{{ $color }}-500 text-white rounded text-xs transition duration-300">
                                             Panggil
                                         </button>
                                     </form>

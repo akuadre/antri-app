@@ -7,15 +7,15 @@
     @include('admin.components.sidebar')
 
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
-        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20">
+    <div class="flex-1 flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <header class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700/50 p-6 sticky top-0 z-20 transition-colors duration-300">
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Kelola Dokter</h1>
                     <p class="text-gray-600 dark:text-gray-400">Manajemen data dokter klinik</p>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button @click="openModal()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg font-medium transition-all duration-300 flex items-center space-x-2">
+                    <button @click="openModal()" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white rounded-lg font-medium transition-all duration-300 flex items-center space-x-2">
                         <i class="fas fa-plus"></i>
                         <span>Tambah Dokter</span>
                     </button>
@@ -27,7 +27,10 @@
             </div>
         </header>
 
-        <div class="px-6 pt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Title  -->
+        <h2 class="mt-6 px-6 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Dokter</h2>
+        <!-- Statistik -->
+        <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
@@ -40,14 +43,14 @@
                 </div>
             </div>
 
-            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-green-300 dark:hover:border-green-500/50 transition-all duration-300 group">
+            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-pink-300 dark:hover:border-pink-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-600 dark:text-gray-400 text-sm">Dokter Teraktif</p>
                         <p class="text-xl font-bold text-gray-800 dark:text-white mt-2">{{ $mostActiveDokter->name ?? '-' }}</p>
                     </div>
-                    <div class="w-12 h-12 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-star text-green-500 dark:text-green-400 text-xl"></i>
+                    <div class="w-12 h-12 bg-pink-100 dark:bg-pink-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-star text-pink-500 dark:text-pink-400 text-xl"></i>
                     </div>
                 </div>
             </div>
@@ -65,6 +68,7 @@
             </div>
         </div>
 
+        <!-- Data Dokter Card View -->
         <div class="px-6 pt-2 flex justify-between items-center">
             <h2 class="text-[28px] font-bold text-gray-800 dark:text-white">Data Dokter</h2>
             <div class="flex items-center space-x-2">
@@ -75,82 +79,75 @@
         </div>
 
         <div class="p-6">
-            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 overflow-hidden">
-                <div class="p-4 border-b border-gray-200 dark:border-gray-700/50 flex justify-between items-center">
-                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Daftar Dokter</h2>
-                    <div class="flex space-x-2">
-                        <button class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg text-sm flex items-center space-x-1">
-                            <i class="fas fa-file-export text-sm"></i>
-                            <span>Export</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach($dokters as $dokter)
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 p-6 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start space-x-4 mb-4">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-full flex items-center justify-center shadow-md">
+                            <i class="fas fa-user-md text-white text-2xl"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white truncate">{{ $dokter->name }}</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">{{ $dokter->poli->name }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Jadwal Praktek -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-blue-100 dark:bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-blue-500 dark:text-blue-400 text-sm"></i>
+                            </div>
+                            <div>
+                                @php
+                                    $hari = collect(explode(',', $dokter->hari_kerja))
+                                            ->map(fn($day) => ucfirst(trim($day)))
+                                            ->join(', ');
+                                @endphp
+                                <p class="text-sm font-medium text-gray-800 dark:text-white">Hari Praktek</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">{{ $hari }}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-clock text-green-500 dark:text-green-400 text-sm"></i>
+                            </div>
+                            <div>
+                                @php
+                                    $jam = \Carbon\Carbon::parse($dokter->start_time)->format('H:i').' - '.
+                                        \Carbon\Carbon::parse($dokter->end_time)->format('H:i');
+                                @endphp
+                                <p class="text-sm font-medium text-gray-800 dark:text-white">Jam Praktek</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">{{ $jam }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-6 flex space-x-2">
+                        <button @click="editDokter({{ json_encode($dokter) }})" class="flex-1 px-3 py-2 bg-yellow-100 dark:bg-yellow-500/20 hover:bg-yellow-200 dark:hover:bg-yellow-500/30 text-yellow-600 dark:text-yellow-400 rounded-lg transition-all duration-300 flex items-center justify-center space-x-1">
+                            <i class="fas fa-edit text-xs"></i>
+                            <span class="text-sm">Edit</span>
                         </button>
-                        <button class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg text-sm flex items-center space-x-1">
-                            <i class="fas fa-filter text-sm"></i>
-                            <span>Filter</span>
-                        </button>
+                        <form action="{{ route('dokter.destroy', $dokter->id) }}" method="POST" class="flex-1">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="confirmHapusDokter(event, {{ $dokter->id }})" class="w-full px-3 py-2 bg-red-100 dark:bg-red-500/20 hover:bg-red-200 dark:hover:bg-red-500/30 text-red-600 dark:text-red-400 rounded-lg transition-all duration-300 flex items-center justify-center space-x-1">
+                                <i class="fas fa-trash-alt text-xs"></i>
+                                <span class="text-sm">Hapus</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
+                @endforeach
+            </div>
+        </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead class="bg-gray-100 dark:bg-gray-700/50">
-                            <tr>
-                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300">No</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Nama Dokter</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Poli</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Hari Praktek</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Jam Praktek</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700/50">
-                            @foreach($dokters as $index => $dokter)
-                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30">
-                                <td class="px-6 py-4 text-center text-sm font-medium text-gray-800 dark:text-white">{{ $index + 1 }}</td>
-                                <td class="px-6 py-4 text-sm font-medium text-gray-800 dark:text-white">{{ $dokter->name }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{{ $dokter->poli->name }}</td>
-
-                                <!-- Kolom Hari Praktek -->
-                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
-                                    @php
-                                        $hari = collect(explode(',', $dokter->hari_kerja))
-                                                ->map(fn($day) => ucfirst($day))
-                                                ->join(', ');
-                                    @endphp
-                                    <div class="px-3 py-1.5 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full inline-flex justify-center text-sm">
-                                        <span class="font-medium">{{ $hari }}</span>
-                                    </div>
-                                </td>
-
-                                <!-- Kolom Jam Praktek -->
-                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
-                                    @php
-                                        $jam = \Carbon\Carbon::parse($dokter->start_time)->format('H:i').' - '.
-                                            \Carbon\Carbon::parse($dokter->end_time)->format('H:i');
-                                    @endphp
-                                    <div class="px-3 py-1.5 bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400 rounded-full inline-flex justify-center text-sm">
-                                        <span>{{ $jam }}</span>
-                                    </div>
-                                </td>
-
-                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300 flex space-x-2">
-                                    <button @click="editDokter({{ json_encode($dokter) }})" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-500 text-white rounded text-xs">
-                                        Edit
-                                    </button>
-                                    <form action="{{ route('dokter.destroy', $dokter->id) }}" id="hapusDokterForm{{ $dokter->id }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="confirmHapusDokter(event, {{ $dokter->id }})" class="px-3 py-1 bg-red-600 hover:bg-red-500 text-white rounded text-xs">
-                                            Hapus
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="p-4 border-t border-gray-200 dark:border-gray-700/50 flex flex-col sm:flex-row justify-between items-center">
+        <!-- Pagination -->
+        <div class="px-6 pb-6">
+            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 p-4">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
                     <div class="mb-2 sm:mb-0 text-sm text-gray-600 dark:text-gray-400">
                         Menampilkan {{ $dokters->firstItem() }} sampai {{ $dokters->lastItem() }} dari {{ $dokters->total() }} entri
                     </div>
@@ -185,6 +182,7 @@
             </div>
         </div>
 
+        <!-- Aktivitas Terkini -->
         <div class="px-6 pb-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 p-6">
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Aktivitas Terkini</h3>
