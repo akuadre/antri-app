@@ -59,7 +59,7 @@ class LoginController extends Controller
 
         Auth::login($owner);
 
-        return redirect()->route('home')->with('success', 'Registrasi berhasil!');
+        return redirect()->intended(route('home'))->with('success', 'Registrasi berhasil!');
     }
 
     public function authenticating(Request $request) {
@@ -70,10 +70,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('home');
+            return redirect()->intended(route('home'));
         }
 
-        return back()->withErrors('Email atau password salah.')->onlyInput('email');
+        // return back()->withErrors('Email atau password salah.')->onlyInput('email');
+        return back()->with('error', 'Email atau password salah.')->onlyInput('email');
     }
 
     function logout(Request $request) {
