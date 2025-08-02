@@ -268,7 +268,6 @@
                                     'kamis' => 'Kamis',
                                     'jumat' => 'Jumat',
                                     'sabtu' => 'Sabtu',
-                                    'minggu' => 'Minggu'
                                 ];
                             @endphp
 
