@@ -1,190 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamLine - Streamline Your Workflow</title>
-    <meta name="description" content="Boost productivity by 300% with our AI-powered project management platform. Automate tasks, collaborate seamlessly, and deliver projects faster than ever.">
+    <title>AntrianSehat - Sistem Antrian Digital Puskesmas</title>
+    <meta name="description" content="Sistem antrian digital terdepan untuk Puskesmas. Daftar online, pantau antrian real-time, hemat waktu hingga 80%." />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    animation: {
-                        'spin': 'spin 1s linear infinite',
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a'
+                        },
+                        secondary: {
+                            50: '#f0f9ff',
+                            500: '#06b6d4',
+                            600: '#0891b2'
+                        },
+                        accent: {
+                            500: '#10b981',
+                            600: '#059669'
+                        }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="min-h-screen bg-white">
+<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
     <!-- Header -->
-    <header class="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur">
+    <header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur">
         <div class="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-            <div class="flex items-center space-x-2">
-                <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-purple-600">
-                    <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
+            <div class="flex items-center space-x-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 shadow-lg">
+                    <i data-lucide="heart-pulse" class="h-6 w-6 text-white"></i>
                 </div>
-                <span class="text-xl font-bold">StreamLine</span>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900 dark:text-white">AntrianSehat</h1>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">Sistem Antrian Digital</p>
+                </div>
             </div>
 
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#features" class="text-sm font-medium hover:text-blue-600 transition-colors">Features</a>
-                <a href="#testimonials" class="text-sm font-medium hover:text-blue-600 transition-colors">Testimonials</a>
-                <a href="#pricing" class="text-sm font-medium hover:text-blue-600 transition-colors">Pricing</a>
-                <a href="#contact" class="text-sm font-medium hover:text-blue-600 transition-colors">Contact</a>
+                <a href="#features" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Fitur</a>
+                <a href="#how-it-works" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Cara Kerja</a>
+                <a href="#testimonials" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Testimoni</a>
+                <a href="#contact" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Kontak</a>
             </nav>
 
             <div class="flex items-center space-x-4">
-                <a href ="{{ route('login') }}" class="hidden md:inline-flex px-4 py-2 text-sm font-medium hover:bg-gray-100 rounded-md transition-colors">
-                    Sign In
-                </a>
-                <button class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-md transition-all">
-                    Start Free Trial
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i data-lucide="sun" class="h-5 w-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="h-5 w-5 block dark:hidden"></i>
                 </button>
-                <button id="mobile-menu-button" class="md:hidden p-2">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+
+                <a href="{{ route('login') }}" class="hidden md:inline-flex px-4 py-2 text-sm font-medium text-gray-700 dark:text-slate-800 dark:bg-slate-200 hover:bg-gray-100 dark:hover:bg-slate-300 rounded-md transition-colors">
+                    Login
+                </a>
+                {{-- <button class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-md transition-all shadow-lg hover:shadow-xl">
+                    Daftar Gratis
+                </button> --}}
+
+                <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 dark:text-gray-300">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden border-t bg-white">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
             <div class="px-4 py-2 space-y-2">
-                <a href="#features" class="block py-2 text-sm font-medium hover:text-blue-600 transition-colors">Features</a>
-                <a href="#testimonials" class="block py-2 text-sm font-medium hover:text-blue-600 transition-colors">Testimonials</a>
-                <a href="#pricing" class="block py-2 text-sm font-medium hover:text-blue-600 transition-colors">Pricing</a>
-                <a href="#contact" class="block py-2 text-sm font-medium hover:text-blue-600 transition-colors">Contact</a>
+                <a href="#features" class="block py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Fitur</a>
+                <a href="#how-it-works" class="block py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Cara Kerja</a>
+                <a href="#testimonials" class="block py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Testimoni</a>
+                <a href="#contact" class="block py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Kontak</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 md:py-32">
-        <div class="container mx-auto px-4 md:px-6">
+    <section class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 md:py-32">
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div class="container mx-auto px-4 md:px-6 relative">
             <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
                 <div class="space-y-8">
-                    <div class="space-y-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
-                            🚀 New: AI-Powered Workflows
-                        </span>
-                        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                            Streamline Your
-                            <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                Workflow
+                    <div class="space-y-6">
+                        <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-accent-500/10 text-accent-600 dark:text-accent-400 border border-accent-500/20">
+                            <i data-lucide="sparkles" class="h-4 w-4 mr-2"></i>
+                            Hemat Waktu Hingga 80%
+                        </div>
+                        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-gray-900 dark:text-white">
+                            Antrian Digital
+                            <span class="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                                Puskesmas
                             </span>
                         </h1>
-                        <p class="text-xl text-gray-600 max-w-2xl">
-                            Boost productivity by 300% with our AI-powered project management platform. Automate tasks,
-                            collaborate seamlessly, and deliver projects faster than ever.
+                        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+                            Revolusi pelayanan kesehatan dengan sistem antrian digital yang menghemat waktu hingga 80%.
+                            Daftar online, pantau antrian real-time, dan nikmati pelayanan yang lebih efisien.
                         </p>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="inline-flex items-center justify-center px-8 py-6 text-lg font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-md transition-all">
-                            Start Free Trial
-                            <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
+                        <button class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 rounded-lg transition-all shadow-lg hover:shadow-xl">
+                            Mulai Daftar Antrian
+                            <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
                         </button>
-                        <button class="inline-flex items-center justify-center px-8 py-6 text-lg font-medium border border-gray-300 bg-transparent hover:bg-gray-50 rounded-md transition-all">
-                            <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                            </svg>
-                            Watch Demo
+                        <button class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium border border-gray-300 dark:border-gray-600 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg transition-all">
+                            <i data-lucide="play" class="mr-2 h-5 w-5"></i>
+                            Lihat Demo
                         </button>
                     </div>
 
-                    <div class="flex items-center space-x-8 text-sm text-gray-600">
+                    <div class="flex items-center space-x-8 text-sm text-gray-600 dark:text-gray-400">
                         <div class="flex items-center space-x-2">
-                            <svg class="h-4 w-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>14-day free trial</span>
+                            <i data-lucide="check-circle" class="h-4 w-4 text-accent-500"></i>
+                            <span>Gratis untuk pasien</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <svg class="h-4 w-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>No credit card required</span>
+                            <i data-lucide="shield-check" class="h-4 w-4 text-accent-500"></i>
+                            <span>Data aman & terlindungi</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl blur-3xl opacity-20"></div>
-                    <img src="/placeholder.svg?height=600&width=800" alt="StreamLine Dashboard" class="relative rounded-2xl shadow-2xl w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-3xl blur-3xl opacity-20"></div>
+                    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-200 dark:border-gray-700">
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Dashboard Antrian</h3>
+                                <div class="flex items-center space-x-2 text-sm text-accent-600 dark:text-accent-400">
+                                    <div class="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
+                                    <span>Live</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-lg">
+                                    <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">23</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Antrian Aktif</div>
+                                </div>
+                                <div class="bg-accent-50 dark:bg-accent-900/20 p-4 rounded-lg">
+                                    <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">5</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Poli Tersedia</div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center">
+                                            <span class="text-sm font-medium text-primary-600 dark:text-primary-400">A12</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm font-medium text-gray-900 dark:text-white">Poli Umum</div>
+                                            <div class="text-xs text-gray-500 dark:text-gray-400">Estimasi: 15 menit</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-accent-600 dark:text-accent-400 font-medium">Dipanggil</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 md:py-32">
+    <section id="features" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center space-y-4 mb-16">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-700">
-                    Features
-                </span>
-                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                    Everything you need to succeed
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300">
+                    Fitur Unggulan
+                </div>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
+                    Solusi Lengkap Antrian Digital
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Powerful features designed to help teams collaborate better and deliver exceptional results.
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Fitur-fitur canggih yang dirancang khusus untuk meningkatkan efisiensi pelayanan kesehatan di Puskesmas.
                 </p>
             </div>
 
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                <div class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
-                    <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center mb-4">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                        </svg>
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
+                    <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-primary-500 to-primary-600 flex items-center justify-center mb-4">
+                        <i data-lucide="smartphone" class="h-6 w-6 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">AI-Powered Automation</h3>
-                    <p class="text-gray-600">
-                        Automate repetitive tasks with intelligent workflows that learn from your team's patterns.
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Antrian Real-time</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Pantau posisi antrian Anda secara real-time melalui smartphone dengan notifikasi otomatis.
                     </p>
                 </div>
 
-                <div class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
-                    <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center mb-4">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                        </svg>
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
+                    <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-accent-500 to-accent-600 flex items-center justify-center mb-4">
+                        <i data-lucide="calendar-plus" class="h-6 w-6 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Team Collaboration</h3>
-                    <p class="text-gray-600">
-                        Real-time collaboration tools that keep your team aligned and productive from anywhere.
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Pendaftaran Online</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Daftar antrian dari rumah tanpa perlu datang ke Puskesmas. Pilih poli dan jadwal yang tersedia.
                     </p>
                 </div>
 
-                <div class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
+                    <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-secondary-500 to-secondary-600 flex items-center justify-center mb-4">
+                        <i data-lucide="bell" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Notifikasi Pintar</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Terima notifikasi via WhatsApp atau SMS ketika giliran Anda sudah dekat untuk dipanggil.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
                     <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mb-4">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
+                        <i data-lucide="building-2" class="h-6 w-6 text-white"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Enterprise Security</h3>
-                    <p class="text-gray-600">
-                        Bank-level security with SOC 2 compliance, SSO, and advanced permission controls.
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Multi-Poli</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Kelola antrian untuk berbagai poli secara bersamaan dengan sistem terintegrasi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 md:py-32 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center space-y-4 mb-16">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-secondary-100 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-300">
+                    Cara Kerja
+                </div>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
+                    4 Langkah Mudah
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Proses yang sederhana dan intuitif untuk mendapatkan pelayanan kesehatan yang lebih efisien.
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 mx-auto bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                            1
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-accent-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="smartphone" class="h-3 w-3 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Daftar Online</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Buka website atau aplikasi AntrianSehat dan pilih Puskesmas terdekat.
                     </p>
                 </div>
 
-                <div class="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow rounded-lg p-6">
-                    <div class="h-12 w-12 rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 flex items-center justify-center mb-4">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 mx-auto bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                            2
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-accent-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="calendar" class="h-3 w-3 text-white"></i>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Smart Analytics</h3>
-                    <p class="text-gray-600">
-                        Gain insights into team performance with detailed analytics and customizable reports.
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Pilih Poli & Jadwal</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Tentukan poli yang diinginkan dan pilih jadwal yang sesuai dengan kebutuhan Anda.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 mx-auto bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                            3
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-accent-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="clock" class="h-3 w-3 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Pantau Antrian</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Pantau posisi antrian Anda secara real-time dan estimasi waktu tunggu.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="relative mb-6">
+                        <div class="w-16 h-16 mx-auto bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                            4
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-accent-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="heart-pulse" class="h-3 w-3 text-white"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Terima Pelayanan</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Datang ke Puskesmas saat giliran Anda dan nikmati pelayanan yang lebih cepat.
                     </p>
                 </div>
             </div>
@@ -192,376 +314,221 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 md:py-32 bg-gray-50">
+    <section id="testimonials" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center space-y-4 mb-16">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
-                    Testimonials
-                </span>
-                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Loved by teams worldwide</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    See what our customers have to say about StreamLine.
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent-100 dark:bg-accent-900 text-accent-700 dark:text-accent-300">
+                    Testimoni
+                </div>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
+                    Dipercaya Ribuan Pengguna
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Lihat bagaimana AntrianSehat membantu dokter, pasien, dan staff Puskesmas meningkatkan efisiensi pelayanan.
                 </p>
             </div>
 
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div class="bg-white border-0 shadow-lg rounded-lg p-6">
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-6">
                     <div class="flex items-center space-x-4 mb-4">
-                        <img src="/placeholder.svg?height=48&width=48" alt="Sarah Johnson" class="w-12 h-12 rounded-full">
+                        <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-semibold">
+                            DR
+                        </div>
                         <div>
-                            <h4 class="font-semibold">Sarah Johnson</h4>
-                            <p class="text-sm text-gray-600">Product Manager, TechCorp</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Dr. Sarah Wijaya</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Dokter Umum, Puskesmas Sehat</p>
                         </div>
                     </div>
                     <div class="flex space-x-1 mb-4">
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
                     </div>
-                    <p class="text-gray-600">
-                        "StreamLine transformed how our team works. We've reduced project delivery time by 40% and our team
-                        collaboration has never been better."
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "AntrianSehat sangat membantu mengatur jadwal pasien. Tidak ada lagi antrian panjang dan pasien bisa datang tepat waktu."
                     </p>
                 </div>
 
-                <div class="bg-white border-0 shadow-lg rounded-lg p-6">
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-6">
                     <div class="flex items-center space-x-4 mb-4">
-                        <img src="/placeholder.svg?height=48&width=48" alt="Michael Chen" class="w-12 h-12 rounded-full">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center text-white font-semibold">
+                            IB
+                        </div>
                         <div>
-                            <h4 class="font-semibold">Michael Chen</h4>
-                            <p class="text-sm text-gray-600">CTO, StartupXYZ</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Ibu Sari Indah</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Pasien Puskesmas</p>
                         </div>
                     </div>
                     <div class="flex space-x-1 mb-4">
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
                     </div>
-                    <p class="text-gray-600">
-                        "The AI automation features are incredible. Tasks that used to take hours now happen automatically.
-                        It's like having an extra team member."
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "Sekarang saya tidak perlu menunggu lama di Puskesmas. Bisa pantau antrian dari rumah dan datang saat giliran saya hampir tiba."
                     </p>
                 </div>
 
-                <div class="bg-white border-0 shadow-lg rounded-lg p-6">
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-6">
                     <div class="flex items-center space-x-4 mb-4">
-                        <img src="/placeholder.svg?height=48&width=48" alt="Emily Rodriguez" class="w-12 h-12 rounded-full">
+                        <div class="w-12 h-12 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-full flex items-center justify-center text-white font-semibold">
+                            AL
+                        </div>
                         <div>
-                            <h4 class="font-semibold">Emily Rodriguez</h4>
-                            <p class="text-sm text-gray-600">Operations Director, GrowthCo</p>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Ahmad Lutfi</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Admin Puskesmas</p>
                         </div>
                     </div>
                     <div class="flex space-x-1 mb-4">
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-yellow-400 text-yellow-400"></i>
                     </div>
-                    <p class="text-gray-600">
-                        "Security was our biggest concern, but StreamLine exceeded our expectations. The enterprise features
-                        give us complete peace of mind."
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "Sistem ini memudahkan pekerjaan kami. Data pasien lebih terorganisir dan laporan antrian bisa dibuat otomatis."
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 md:py-32">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center space-y-4 mb-16">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700">
-                    Pricing
-                </span>
-                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Simple, transparent pricing</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Choose the perfect plan for your team. All plans include a 14-day free trial.
-                </p>
-            </div>
-
-            <div class="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-                <div class="bg-white border-2 hover:border-blue-200 transition-colors rounded-lg p-6">
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
-                        <p class="text-gray-600 mb-4">Perfect for small teams getting started</p>
-                        <div class="mt-4">
-                            <span class="text-4xl font-bold">$9</span>
-                            <span class="text-gray-600">/user/month</span>
-                        </div>
-                    </div>
-                    <div class="space-y-4 mb-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Up to 10 team members</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Basic automation</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>5GB storage</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Email support</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="w-full px-4 py-2 border border-gray-300 bg-transparent hover:bg-gray-50 rounded-md transition-all">
-                        Start Free Trial
-                    </button>
-                </div>
-
-                <div class="bg-white border-2 border-blue-500 relative hover:border-blue-600 transition-colors rounded-lg p-6">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600">Most Popular</span>
-                    </div>
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-bold mb-2">Professional</h3>
-                        <p class="text-gray-600 mb-4">Best for growing teams and businesses</p>
-                        <div class="mt-4">
-                            <span class="text-4xl font-bold">$19</span>
-                            <span class="text-gray-600">/user/month</span>
-                        </div>
-                    </div>
-                    <div class="space-y-4 mb-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Up to 50 team members</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Advanced AI automation</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>100GB storage</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Priority support</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Custom integrations</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="w-full px-4 py-2 text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-md transition-all">
-                        Start Free Trial
-                    </button>
-                </div>
-
-                <div class="bg-white border-2 hover:border-purple-200 transition-colors rounded-lg p-6">
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
-                        <p class="text-gray-600 mb-4">For large organizations with advanced needs</p>
-                        <div class="mt-4">
-                            <span class="text-4xl font-bold">$39</span>
-                            <span class="text-gray-600">/user/month</span>
-                        </div>
-                    </div>
-                    <div class="space-y-4 mb-6">
-                        <ul class="space-y-3">
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Unlimited team members</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Full AI automation suite</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>Unlimited storage</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>24/7 dedicated support</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>SSO & advanced security</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="w-full px-4 py-2 border border-gray-300 bg-transparent hover:bg-gray-50 rounded-md transition-all">
-                        Contact Sales
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="py-20 md:py-32 bg-gradient-to-r from-blue-600 to-purple-600">
+    <!-- CTA Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-700 dark:to-secondary-700">
         <div class="container mx-auto px-4 md:px-6 text-center">
             <div class="max-w-3xl mx-auto space-y-8">
                 <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-white">
-                    Ready to streamline your workflow?
+                    Siap Merasakan Pelayanan Kesehatan yang Lebih Efisien?
                 </h2>
-                <p class="text-xl text-blue-100">
-                    Join thousands of teams who have transformed their productivity with StreamLine. Start your free trial
-                    today and see the difference.
+                <p class="text-xl text-primary-100">
+                    Bergabunglah dengan ribuan Puskesmas yang telah merasakan manfaat AntrianSehat.
+                    Mulai transformasi digital hari ini juga!
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="inline-flex items-center justify-center px-8 py-6 text-lg font-medium bg-white text-blue-600 hover:bg-gray-100 rounded-md transition-all">
-                        Start Free Trial
-                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
+                    <button class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium bg-white text-primary-600 hover:bg-gray-100 rounded-lg transition-all shadow-lg hover:shadow-xl">
+                        Daftar Sekarang
+                        <i data-lucide="arrow-right" class="ml-2 h-5 w-5"></i>
                     </button>
-                    <button class="inline-flex items-center justify-center px-8 py-6 text-lg font-medium border border-white text-white hover:bg-white hover:text-blue-600 rounded-md transition-all bg-transparent">
-                        Schedule Demo
+                    <button class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium border border-white text-white hover:bg-white hover:text-primary-600 rounded-lg transition-all bg-transparent">
+                        Konsultasi Gratis
                     </button>
                 </div>
-                <p class="text-sm text-blue-100">14-day free trial • No credit card required • Cancel anytime</p>
+                <div class="flex items-center justify-center space-x-8 text-sm text-primary-100">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="check-circle" class="h-4 w-4"></i>
+                        <span>Setup gratis</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="headphones" class="h-4 w-4"></i>
+                        <span>Support 24/7</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="shield" class="h-4 w-4"></i>
+                        <span>Data aman</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-gray-900 text-white py-16">
+    <footer id="contact" class="bg-gray-900 dark:bg-black text-white py-16">
         <div class="container mx-auto px-4 md:px-6">
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <div class="space-y-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-purple-600">
-                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
+                    <div class="flex items-center space-x-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500">
+                            <i data-lucide="heart-pulse" class="h-6 w-6 text-white"></i>
                         </div>
-                        <span class="text-xl font-bold">StreamLine</span>
+                        <div>
+                            <h1 class="text-xl font-bold">AntrianSehat</h1>
+                            <p class="text-xs text-gray-400">Sistem Antrian Digital</p>
+                        </div>
                     </div>
                     <p class="text-gray-400 max-w-xs">
-                        Streamline your workflow and boost productivity with our AI-powered project management platform.
+                        Revolusi pelayanan kesehatan dengan sistem antrian digital yang menghemat waktu hingga 80%.
                     </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="h-5 w-5"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="font-semibold">Product</h4>
+                    <h4 class="font-semibold">Produk</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Integrations</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Fitur Utama</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Notifikasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Laporan</a></li>
                     </ul>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="font-semibold">Company</h4>
+                    <h4 class="font-semibold">Perusahaan</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Tentang Kami</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Karir</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kontak</a></li>
                     </ul>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="font-semibold">Support</h4>
+                    <h4 class="font-semibold">Dukungan</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pusat Bantuan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Dokumentasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Hubungi Kami</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2024 StreamLine. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">Twitter</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">LinkedIn</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">GitHub</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
+                <p class="text-gray-400 text-sm">© 2024 AntrianSehat. Seluruh hak cipta dilindungi.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-white transition-colors">Syarat Layanan</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', savedTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+        });
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -590,10 +557,25 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.classList.add('shadow-md');
+                header.classList.add('shadow-lg');
             } else {
-                header.classList.remove('shadow-md');
+                header.classList.remove('shadow-lg');
             }
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Add loading state for demo purposes
+                if (this.textContent.includes('Daftar') || this.textContent.includes('Demo')) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i data-lucide="loader-2" class="h-4 w-4 animate-spin mr-2"></i>Loading...';
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        lucide.createIcons();
+                    }, 2000);
+                }
+            });
         });
     </script>
 </body>

@@ -80,8 +80,13 @@ class PoliController extends Controller
         return redirect()->route('poli')->with('success', 'Poli berhasil diperbarui');
     }
 
-    public function destroy(Poli $poli)
+    public function destroy($id)
     {
+        $poli = Poli::findOrFail($id);
+        if (!$poli) {
+            return redirect()->back()->with('error', 'Data poli tidak ditemukan!');
+        }
+        
         if($poli->dokters()->count() > 0) {
             return redirect()->back()->with('error', 'Tidak dapat menghapus poli yang memiliki dokter');
         }

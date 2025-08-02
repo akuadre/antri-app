@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder
 
         // Seed Dokters
         $dokters = [
+            // Poli 1
             [
                 'name' => 'dr. Tirta Pengpengpeng',
                 'poli_id' => 1,
@@ -73,6 +74,36 @@ class DatabaseSeeder extends Seeder
                 'end_time' => '12:00:00',
             ],
             [
+                'name' => 'dr. Siti Lestari',
+                'poli_id' => 1,
+                'hari_kerja' => 'senin,selasa,rabu',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'dr. Dimas Saputra',
+                'poli_id' => 1,
+                'hari_kerja' => 'senin,rabu,jumat',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+            [
+                'name' => 'dr. Wulan Anggraini',
+                'poli_id' => 1,
+                'hari_kerja' => 'senin,selasa,kamis',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Ferry Gunawan',
+                'poli_id' => 1,
+                'hari_kerja' => 'rabu,kamis',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+
+            // Poli 2
+            [
                 'name' => 'drg. Andi Rahman',
                 'poli_id' => 2,
                 'hari_kerja' => 'senin,selasa,rabu,kamis,jumat,sabtu',
@@ -80,13 +111,183 @@ class DatabaseSeeder extends Seeder
                 'end_time' => '13:00:00',
             ],
             [
+                'name' => 'drg. Indah Pratiwi',
+                'poli_id' => 2,
+                'hari_kerja' => 'senin,selasa,rabu',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Fajar Setiawan',
+                'poli_id' => 2,
+                'hari_kerja' => 'rabu,kamis,jumat',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'dr. Nia Marlina',
+                'poli_id' => 2,
+                'hari_kerja' => 'selasa,kamis',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+            [
+                'name' => 'dr. Johan Sebastian',
+                'poli_id' => 2,
+                'hari_kerja' => 'jumat,sabtu',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+
+            // Poli 3
+            [
                 'name' => 'dr. Rina Sari',
                 'poli_id' => 3,
                 'hari_kerja' => 'senin,selasa,rabu,kamis,jumat',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
             ],
+            [
+                'name' => 'dr. Galuh Putri',
+                'poli_id' => 3,
+                'hari_kerja' => 'senin,rabu,jumat',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'dr. Aldi Firmansyah',
+                'poli_id' => 3,
+                'hari_kerja' => 'selasa,kamis,sabtu',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Bella Nuraini',
+                'poli_id' => 3,
+                'hari_kerja' => 'senin,selasa,rabu',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+            [
+                'name' => 'dr. Hilda Ramadhani',
+                'poli_id' => 3,
+                'hari_kerja' => 'rabu,kamis',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+
+            // Poli 4
+            [
+                'name' => 'dr. Bagas Nugroho',
+                'poli_id' => 4,
+                'hari_kerja' => 'senin,selasa,rabu,kamis,jumat',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Kurniawan',
+                'poli_id' => 4,
+                'hari_kerja' => 'senin,rabu,jumat',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'drg. Rika Permatasari',
+                'poli_id' => 4,
+                'hari_kerja' => 'selasa,kamis',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+            [
+                'name' => 'dr. Vivi Lestari',
+                'poli_id' => 4,
+                'hari_kerja' => 'jumat,sabtu',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Aditya Kusuma',
+                'poli_id' => 4,
+                'hari_kerja' => 'senin,selasa,rabu',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+
+            // Poli 5
+            [
+                'name' => 'dr. Tika Widya',
+                'poli_id' => 5,
+                'hari_kerja' => 'senin,selasa,kamis',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Retno Ayu',
+                'poli_id' => 5,
+                'hari_kerja' => 'rabu,kamis,jumat',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+            [
+                'name' => 'dr. Indra Maulana',
+                'poli_id' => 5,
+                'hari_kerja' => 'senin,rabu,jumat',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'dr. Yudha Saputra',
+                'poli_id' => 5,
+                'hari_kerja' => 'selasa,kamis',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Sari Dewi',
+                'poli_id' => 5,
+                'hari_kerja' => 'jumat,sabtu',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+
+            // Poli 6
+            [
+                'name' => 'dr. Rio Wahyudi',
+                'poli_id' => 6,
+                'hari_kerja' => 'senin,selasa,rabu',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Nanda Khairunnisa',
+                'poli_id' => 6,
+                'hari_kerja' => 'senin,rabu,jumat',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
+            [
+                'name' => 'drg. Hani Wulandari',
+                'poli_id' => 6,
+                'hari_kerja' => 'selasa,kamis',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+            ],
+            [
+                'name' => 'dr. Yoga Pramana',
+                'poli_id' => 6,
+                'hari_kerja' => 'jumat,sabtu',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+            ],
+            [
+                'name' => 'dr. Agus Wijaya',
+                'poli_id' => 6,
+                'hari_kerja' => 'senin,selasa,rabu,kamis',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+            ],
         ];
+
 
         foreach ($dokters as $dokter) {
             Dokter::create($dokter);
@@ -123,15 +324,15 @@ class DatabaseSeeder extends Seeder
         // Sementara
 
         // Seed Laporan
-        DB::table('laporan')->insert([
-            'id_user' => 1,
-            'nama_tempat' => 'Cimahi Mall',
-            'alamat' => 'Jl. Cimahi Mall',
-            'foto' => '683401fd0aa79.jpg',
-            'deskripsi' => 'Ada Banyak Sampah',
-            'kategori' => 'Sampah Jalanan',
-            'status' => 'Dikirim',
-            // 'created_at' => now()->toDateString(),
-        ]);
+        // DB::table('laporan')->insert([
+        //     'id_user' => 1,
+        //     'nama_tempat' => 'Cimahi Mall',
+        //     'alamat' => 'Jl. Cimahi Mall',
+        //     'foto' => '683401fd0aa79.jpg',
+        //     'deskripsi' => 'Ada Banyak Sampah',
+        //     'kategori' => 'Sampah Jalanan',
+        //     'status' => 'Dikirim',
+        //     // 'created_at' => now()->toDateString(),
+        // ]);
     }
 }

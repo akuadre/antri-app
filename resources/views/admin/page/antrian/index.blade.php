@@ -144,7 +144,7 @@
                                         <p class="text-sm text-gray-600 dark:text-gray-300">{{ $currentAntrian->pasien->name }}</p>
                                         <p class="text-xs text-gray-500 dark:text-gray-400">Dr. {{ $currentAntrian->dokter->name }}</p>
                                     </div>
-                                    <form action="{{ route('antrian.selesai', $currentAntrian->id) }}" method="POST">
+                                    <form action="{{ route('antrian.selesai', $currentAntrian->id) }}" id="selesaiForm{{ $currentAntrian->id }}" method="POST">
                                         @csrf
                                         <button type="submit" onclick="confirmSelesai(event, {{ $currentAntrian->id }})" class="px-3 py-1 bg-green-600 hover:bg-green-500 text-white rounded text-xs transition duration-300">
                                             Selesai
@@ -165,7 +165,7 @@
                                         <p class="text-xl font-bold text-gray-800 dark:text-white">{{ $nextAntrian->nomor_antrian }}</p>
                                         <p class="text-sm text-gray-600 dark:text-gray-300">{{ $nextAntrian->pasien->name }}</p>
                                     </div>
-                                    <form action="{{ route('antrian.panggil', $nextAntrian->id) }}" method="POST">
+                                    <form action="{{ route('antrian.panggil', $nextAntrian->id) }}" id="panggilForm{{ $nextAntrian->id }}" method="POST">
                                         @csrf
                                         <button type="submit" onclick="confirmPanggil(event, {{ $nextAntrian->id }})" class="px-3 py-1 bg-{{ $color }}-600 hover:bg-{{ $color }}-500 text-white rounded text-xs transition duration-300">
                                             Panggil

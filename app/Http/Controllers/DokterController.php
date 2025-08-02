@@ -13,7 +13,7 @@ class DokterController extends Controller
         $dokters = Dokter::with(['poli', 'antrians'])
                     ->withCount('antrians')
                     ->orderBy('antrians_count', 'desc')
-                    ->paginate(10);
+                    ->paginate(6);
 
         $mostActiveDokter = Dokter::withCount('antrians')
                             ->orderBy('antrians_count', 'desc')

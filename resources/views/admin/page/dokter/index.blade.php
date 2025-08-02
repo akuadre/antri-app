@@ -141,7 +141,7 @@
                             <i class="fas fa-edit text-xs"></i>
                             <span class="text-sm">Edit</span>
                         </button>
-                        <form action="{{ route('dokter.destroy', $dokter->id) }}" method="POST" class="flex-1">
+                        <form action="{{ route('dokter.destroy', $dokter->id) }}" id="hapusDokterForm{{ $dokter->id }}" method="POST" class="flex-1">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="confirmHapusDokter(event, {{ $dokter->id }})" class="w-full px-3 py-2 bg-red-100 dark:bg-red-500/20 hover:bg-red-200 dark:hover:bg-red-500/30 text-red-600 dark:text-red-400 rounded-lg transition-all duration-300 flex items-center justify-center space-x-1">

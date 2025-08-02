@@ -69,7 +69,8 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white min-h-screen overflow-x-hidden">
+{{-- <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white min-h-screen overflow-x-hidden"> --}}
+<body class="bg-gray-900 text-white min-h-screen overflow-x-hidden">
     <!-- Animated Background -->
     {{-- <div class="fixed inset-0 z-0">
         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-blue-50/20 to-purple-50/30 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/30"></div>
