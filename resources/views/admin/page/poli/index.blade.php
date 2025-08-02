@@ -36,7 +36,7 @@
             <h2 class="text-[28px] font-bold text-gray-800 dark:text-white">Informasi Antrian</h2>
             <button @click="openModal()" class="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white rounded-lg font-medium transition-all duration-300 flex items-center space-x-2">
                 <i class="fas fa-plus"></i>
-                <span>Tambah Dokter</span>
+                <span>Tambah Poli</span>
             </button>
         </div>
         <!-- Statistik -->

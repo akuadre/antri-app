@@ -159,6 +159,13 @@ class DokterController extends Controller
     public function destroy($id)
     {
         $dokter = Dokter::findOrFail($id);
+
+        // Hapus foto jika ada
+        if ($dokter->photo && file_exists(public_path('images/dokter/' . $dokter->photo))) {
+            unlink(public_path('images/dokter/' . $dokter->photo));
+        }
+
+        // Hapus data dokter dari database
         $dokter->delete();
 
         return redirect()->route('dokter')->with('success', 'Dokter berhasil dihapus');
