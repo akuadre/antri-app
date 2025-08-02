@@ -11,7 +11,6 @@ class AdminController extends Controller
     public function index() {
         $totalAntrian = Antrian::whereDate('tanggal', today())->count();
         $selesaiCount = Antrian::whereDate('tanggal', today())->where('status', 'selesai')->count();
-        $poliCount = Poli::count();
         $recentAntrian = Antrian::with(['poli', 'dokter'])
             ->whereDate('tanggal', today())
             ->latest()
@@ -21,7 +20,6 @@ class AdminController extends Controller
         return view('admin.page.dashboard.index', compact(
             'totalAntrian',
             'selesaiCount',
-            'poliCount',
             'recentAntrian'
         ));
     }

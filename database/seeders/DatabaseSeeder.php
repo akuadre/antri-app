@@ -115,12 +115,12 @@ class DatabaseSeeder extends Seeder
                 'photo' => 'andi.jpg'
             ],
             [
-                'name' => 'drg. Indah Pratiwi',
+                'name' => 'drg. Denis Kenapa bro',
                 'poli_id' => 2,
                 'hari_kerja' => 'senin,selasa,rabu',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
-                'photo' => 'indah.jpg'
+                'photo' => 'denis.jpg'
             ],
             [
                 'name' => 'dr. Fajar Panorama',
