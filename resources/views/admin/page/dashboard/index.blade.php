@@ -36,7 +36,7 @@
         <!-- Title  -->
         <h2 class="mt-6 px-6 text-[28px] font-bold text-gray-800 dark:text-white">Informasi Admin</h2>
         <!-- Stats Cards -->
-        <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-green-300 dark:hover:border-green-500/50 transition-all duration-300 group">
+            {{-- <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-green-300 dark:hover:border-green-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-600 dark:text-gray-400 text-sm">Antrian Selesai</p>
@@ -59,13 +59,13 @@
                         <i class="fas fa-check-circle text-green-500 dark:text-green-400 text-xl"></i>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-yellow-300 dark:hover:border-yellow-500/50 transition-all duration-300 group">
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-gray-600 dark:text-gray-400 text-sm">Total Dokter</p>
-                        <p class="text-3xl font-bold text-gray-800 dark:text-white mt-2">{{ $poliCount }}</p>
+                        <p class="text-3xl font-bold text-gray-800 dark:text-white mt-2">{{ $dokterCount }}</p>
                     </div>
                     <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-user-md text-yellow-500 dark:text-yellow-400 text-xl"></i>
@@ -130,6 +130,49 @@
                 </div>
             </div>
         </div>
+
+        <!-- Aktivitas Terkini -->
+        <div class="px-6 pb-6">
+            <div class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 p-6">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Aktivitas Terkini</h3>
+                <div class="space-y-4">
+                    @foreach($antrians->take(3) as $activity)
+                        @php
+                            $status = $activity->status;
+
+                            if ($status === 'menunggu') {
+                                $bgClass = 'bg-yellow-100 dark:bg-yellow-500/20 text-yellow-500 dark:text-yellow-400';
+                                $icon = 'fa-clock';
+                                $statusText = 'ditambahkan';
+                            } elseif ($status === 'diproses') {
+                                $bgClass = 'bg-blue-100 dark:bg-blue-500/20 text-blue-500 dark:text-blue-400';
+                                $icon = 'fa-user-md';
+                                $statusText = 'dipanggil';
+                            } else {
+                                $bgClass = 'bg-green-100 dark:bg-green-500/20 text-green-500 dark:text-green-400';
+                                $icon = 'fa-check';
+                                $statusText = 'diselesaikan';
+                            }
+                        @endphp
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center {{ $bgClass }}">
+                                <i class="fas {{ $icon }}"></i>
+                            </div>
+
+                            <div>
+                                <p class="text-sm font-medium text-gray-800 dark:text-white">
+                                    Antrian {{ $activity->nomor_antrian }} - {{ $activity->poli->name }} {{ $statusText }}
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                    {{ $activity->created_at->diffForHumans() }}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 @endsection
