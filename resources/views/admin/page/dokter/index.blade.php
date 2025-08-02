@@ -94,8 +94,12 @@
                 @foreach($dokters as $dokter)
                 <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl border border-gray-200 dark:border-gray-700/50 p-6 hover:shadow-lg transition-all duration-300">
                     <div class="flex items-start space-x-4 mb-4">
-                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-full flex items-center justify-center shadow-md">
-                            <i class="fas fa-user-md text-white text-2xl"></i>
+                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-full flex items-center justify-center shadow-md overflow-hidden">
+                            @if($dokter->photo)
+                                <img src="{{ asset('images/dokter/' . $dokter->photo) }}" alt="{{ $dokter->name }}" class="w-full h-full object-cover">
+                            @else
+                                <i class="fas fa-user-md text-white text-2xl"></i>
+                            @endif
                         </div>
                         <div class="flex-1 min-w-0">
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white truncate">{{ $dokter->name }}</h3>
@@ -232,7 +236,7 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <form x-bind:action="formAction" method="POST">
+            <form x-bind:action="formAction" method="POST" enctype="multipart/form-data">
                 @csrf
                 <template x-if="isEditMode">
                     @method('PUT')
@@ -299,6 +303,22 @@
                                    class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600/50 rounded-lg text-gray-800 dark:text-white">
                         </div>
                     </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Foto Dokter</label>
+
+                        <!-- Foto saat ini -->
+                        <template x-if="formData.photo">
+                            <div class="mb-2">
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Foto saat ini:</p>
+                                <img :src="'/images/dokter/' + formData.photo" alt="Foto Dokter" class="w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-600">
+                            </div>
+                        </template>
+
+                        <!-- Input foto baru -->
+                        <input type="file" name="photo"
+                            class="w-full mt-1 px-4 py-2 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600/50 rounded-lg text-gray-800 dark:text-white file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    </div>
                 </div>
 
                 <div class="mt-6 flex justify-end space-x-3">
@@ -329,7 +349,8 @@ document.addEventListener('alpine:init', () => {
             poli_id: '',
             hari_kerja: [],
             start_time: '08:00',
-            end_time: '15:00'
+            end_time: '15:00',
+            photo: null
         },
 
         openModal() {
@@ -351,7 +372,8 @@ document.addEventListener('alpine:init', () => {
                 poli_id: '',
                 hari_kerja: [],
                 start_time: '08:00',
-                end_time: '15:00'
+                end_time: '15:00',
+                photo: null
             };
         },
 
@@ -372,7 +394,8 @@ document.addEventListener('alpine:init', () => {
                 poli_id: dokter.poli_id,
                 hari_kerja: hariKerja,
                 start_time: dokter.start_time.substring(0, 5), // Format HH:MM
-                end_time: dokter.end_time.substring(0, 5)     // Format HH:MM
+                end_time: dokter.end_time.substring(0, 5),     // Format HH:MM
+                photo: dokter.photo
             };
         }
     }));

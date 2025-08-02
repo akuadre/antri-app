@@ -63,7 +63,14 @@ class DokterController extends Controller
             'hari_kerja' => 'required|array',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
+
+        $photoName = null;
+        if ($request->hasFile('photo')) {
+            $photoName = uniqid('dokter_') . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(public_path('images/dokter'), $photoName);
+        }
 
         $orderedDays = collect($request->hari_kerja)->sortBy(function ($day) {
             $dayOrder = [
@@ -84,6 +91,7 @@ class DokterController extends Controller
             'hari_kerja' => implode(',', $orderedDays),
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
+            'photo' => $photoName,
         ]);
 
         return redirect()->route('dokter')->with('success', 'Dokter berhasil ditambahkan');
@@ -103,6 +111,7 @@ class DokterController extends Controller
             'hari_kerja' => 'required|array',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         $orderedDays = collect($request->hari_kerja)->sortBy(function ($day) {
@@ -119,6 +128,18 @@ class DokterController extends Controller
         })->values()->all();
 
         $dokter = Dokter::findOrFail($id);
+
+        // Hapus foto lama jika user upload foto baru
+        if ($request->hasFile('photo')) {
+            if ($dokter->photo && file_exists(public_path('images/dokter/' . $dokter->photo))) {
+                unlink(public_path('images/dokter/' . $dokter->photo));
+            }
+
+            $photoName = uniqid('dokter_') . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(public_path('images/dokter'), $photoName);
+            $dokter->photo = $photoName;
+        }
+
         $dokter->update([
             'name' => $request->nama,
             'poli_id' => $request->poli_id,
@@ -126,6 +147,11 @@ class DokterController extends Controller
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
         ]);
+
+        if (isset($photoName)) {
+            $dokter->photo = $photoName;
+            $dokter->save();
+        }
 
         return redirect()->route('dokter')->with('success', 'Dokter berhasil diperbarui');
     }
