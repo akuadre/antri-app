@@ -16,14 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('poli_id')->constrained('polis')->onDelete('cascade');
             $table->string('hari_kerja');
-            // $table->enum('start_day', [
-            //     'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
-            // ])->nullable();
-            // $table->enum('end_day', [
-            //     'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
-            // ])->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
+            $table->string('photo')->nullable(); // <- Tambahkan ini
             $table->timestamps();
         });
     }

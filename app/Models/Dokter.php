@@ -9,7 +9,8 @@ class Dokter extends Model
     protected $fillable = [
         'name', 'poli_id',
         'hari_kerja',
-        'start_time', 'end_time'
+        'start_time', 'end_time',
+        'photo'
     ];
 
     // Relasi ke poli

@@ -72,43 +72,47 @@ class DatabaseSeeder extends Seeder
                 'hari_kerja' => 'jumat',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
+                'photo' => 'tirta.png'
             ],
             [
-                'name' => 'dr. Siti Lestari',
+                'name' => 'drg. Ryu si Motivator',
                 'poli_id' => 1,
-                'hari_kerja' => 'senin,selasa,rabu',
-                'start_time' => '09:00:00',
-                'end_time' => '13:00:00',
+                'hari_kerja' => 'selasa,kamis',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+                'photo' => 'motivatork.jpg'
             ],
             [
-                'name' => 'dr. Dimas Saputra',
+                'name' => 'dr. Jess No Limit',
                 'poli_id' => 1,
                 'hari_kerja' => 'senin,rabu,jumat',
                 'start_time' => '10:00:00',
                 'end_time' => '14:00:00',
+                'photo' => 'jessnolimit.jpeg'
             ],
-            [
-                'name' => 'dr. Wulan Anggraini',
-                'poli_id' => 1,
-                'hari_kerja' => 'senin,selasa,kamis',
-                'start_time' => '08:00:00',
-                'end_time' => '12:00:00',
-            ],
-            [
-                'name' => 'dr. Ferry Gunawan',
-                'poli_id' => 1,
-                'hari_kerja' => 'rabu,kamis',
-                'start_time' => '09:00:00',
-                'end_time' => '13:00:00',
-            ],
+            // [
+            //     'name' => 'dr. Wulan Anggraini',
+            //     'poli_id' => 1,
+            //     'hari_kerja' => 'senin,selasa,kamis',
+            //     'start_time' => '08:00:00',
+            //     'end_time' => '12:00:00',
+            // ],
+            // [
+            //     'name' => 'dr. Ferry Gunawan',
+            //     'poli_id' => 1,
+            //     'hari_kerja' => 'rabu,kamis',
+            //     'start_time' => '09:00:00',
+            //     'end_time' => '13:00:00',
+            // ],
 
             // Poli 2
             [
-                'name' => 'drg. Andi Rahman',
+                'name' => 'drg. Andi Lukito',
                 'poli_id' => 2,
                 'hari_kerja' => 'senin,selasa,rabu,kamis,jumat,sabtu',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+                'photo' => 'andi.jpg'
             ],
             [
                 'name' => 'drg. Indah Pratiwi',
@@ -116,176 +120,190 @@ class DatabaseSeeder extends Seeder
                 'hari_kerja' => 'senin,selasa,rabu',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
+                'photo' => 'indah.jpg'
             ],
             [
-                'name' => 'dr. Fajar Setiawan',
+                'name' => 'dr. Fajar Panorama',
                 'poli_id' => 2,
                 'hari_kerja' => 'rabu,kamis,jumat',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+                'photo' => 'fajar.jpeg'
             ],
-            [
-                'name' => 'dr. Nia Marlina',
-                'poli_id' => 2,
-                'hari_kerja' => 'selasa,kamis',
-                'start_time' => '10:00:00',
-                'end_time' => '14:00:00',
-            ],
-            [
-                'name' => 'dr. Johan Sebastian',
-                'poli_id' => 2,
-                'hari_kerja' => 'jumat,sabtu',
-                'start_time' => '08:00:00',
-                'end_time' => '12:00:00',
-            ],
+            // [
+            //     'name' => 'dr. Nia Marlina',
+            //     'poli_id' => 2,
+            //     'hari_kerja' => 'selasa,kamis',
+            //     'start_time' => '10:00:00',
+            //     'end_time' => '14:00:00',
+            // ],
+            // [
+            //     'name' => 'dr. Johan Sebastian',
+            //     'poli_id' => 2,
+            //     'hari_kerja' => 'jumat,sabtu',
+            //     'start_time' => '08:00:00',
+            //     'end_time' => '12:00:00',
+            // ],
 
             // Poli 3
             [
-                'name' => 'dr. Rina Sari',
+                'name' => 'dr. Rapi Amat',
                 'poli_id' => 3,
                 'hari_kerja' => 'senin,selasa,rabu,kamis,jumat',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
+                'photo' => 'rapi.jpg'
             ],
             [
-                'name' => 'dr. Galuh Putri',
+                'name' => 'dr. Bigmo Kesukaan Anak Anak',
                 'poli_id' => 3,
-                'hari_kerja' => 'senin,rabu,jumat',
-                'start_time' => '09:00:00',
-                'end_time' => '13:00:00',
+                'hari_kerja' => 'senin,selasa,rabu,kamis,jumat',
+                'start_time' => '08:00:00',
+                'end_time' => '12:00:00',
+                'photo' => 'bigmo.jpeg'
             ],
             [
-                'name' => 'dr. Aldi Firmansyah',
+                'name' => 'dr. Rasyah GamerS',
                 'poli_id' => 3,
                 'hari_kerja' => 'selasa,kamis,sabtu',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
+                'photo' => 'rasyag.jpeg'
             ],
-            [
-                'name' => 'dr. Bella Nuraini',
-                'poli_id' => 3,
-                'hari_kerja' => 'senin,selasa,rabu',
-                'start_time' => '10:00:00',
-                'end_time' => '14:00:00',
-            ],
-            [
-                'name' => 'dr. Hilda Ramadhani',
-                'poli_id' => 3,
-                'hari_kerja' => 'rabu,kamis',
-                'start_time' => '09:00:00',
-                'end_time' => '13:00:00',
-            ],
+            // [
+            //     'name' => 'dr. Bella Nuraini',
+            //     'poli_id' => 3,
+            //     'hari_kerja' => 'senin,selasa,rabu',
+            //     'start_time' => '10:00:00',
+            //     'end_time' => '14:00:00',
+            // ],
+            // [
+            //     'name' => 'dr. Hilda Ramadhani',
+            //     'poli_id' => 3,
+            //     'hari_kerja' => 'rabu,kamis',
+            //     'start_time' => '09:00:00',
+            //     'end_time' => '13:00:00',
+            // ],
 
             // Poli 4
             [
-                'name' => 'dr. Bagas Nugroho',
-                'poli_id' => 4,
-                'hari_kerja' => 'senin,selasa,rabu,kamis,jumat',
-                'start_time' => '08:00:00',
-                'end_time' => '12:00:00',
-            ],
-            [
-                'name' => 'dr. Kurniawan',
+                'name' => 'dr. Jefri NichoL',
                 'poli_id' => 4,
                 'hari_kerja' => 'senin,rabu,jumat',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+                'photo' => 'jefri.png'
             ],
             [
-                'name' => 'drg. Rika Permatasari',
+                'name' => 'dr. Adit Udit',
+                'poli_id' => 4,
+                'hari_kerja' => 'senin,rabu,jumat',
+                'start_time' => '09:00:00',
+                'end_time' => '13:00:00',
+                'photo' => 'aditi.jpg'
+            ],
+            [
+                'name' => 'drg. Mungkung Idola',
                 'poli_id' => 4,
                 'hari_kerja' => 'selasa,kamis',
                 'start_time' => '10:00:00',
                 'end_time' => '14:00:00',
+                'photo' => 'mungkung.jpg'
             ],
-            [
-                'name' => 'dr. Vivi Lestari',
-                'poli_id' => 4,
-                'hari_kerja' => 'jumat,sabtu',
-                'start_time' => '08:00:00',
-                'end_time' => '12:00:00',
-            ],
-            [
-                'name' => 'dr. Aditya Kusuma',
-                'poli_id' => 4,
-                'hari_kerja' => 'senin,selasa,rabu',
-                'start_time' => '09:00:00',
-                'end_time' => '13:00:00',
-            ],
+            // [
+            //     'name' => 'dr. Vivi Lestari',
+            //     'poli_id' => 4,
+            //     'hari_kerja' => 'jumat,sabtu',
+            //     'start_time' => '08:00:00',
+            //     'end_time' => '12:00:00',
+            // ],
+            // [
+            //     'name' => 'dr. Aditya Kusuma',
+            //     'poli_id' => 4,
+            //     'hari_kerja' => 'senin,selasa,rabu',
+            //     'start_time' => '09:00:00',
+            //     'end_time' => '13:00:00',
+            // ],
 
             // Poli 5
             [
-                'name' => 'dr. Tika Widya',
+                'name' => 'dr. Keenan Suka Teriak',
                 'poli_id' => 5,
                 'hari_kerja' => 'senin,selasa,kamis',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
+                'photo' => 'keenan.jpeg'
             ],
             [
-                'name' => 'dr. Retno Ayu',
+                'name' => 'dr. Luthpie Suka Teriak Juga',
                 'poli_id' => 5,
                 'hari_kerja' => 'rabu,kamis,jumat',
                 'start_time' => '10:00:00',
                 'end_time' => '14:00:00',
+                'photo' => 'luthpie.jpeg'
             ],
             [
-                'name' => 'dr. Indra Maulana',
+                'name' => 'dr. SMKN 1 Cimahi',
                 'poli_id' => 5,
                 'hari_kerja' => 'senin,rabu,jumat',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+                'photo' => 'skolah.png'
             ],
-            [
-                'name' => 'dr. Yudha Saputra',
-                'poli_id' => 5,
-                'hari_kerja' => 'selasa,kamis',
-                'start_time' => '08:00:00',
-                'end_time' => '12:00:00',
-            ],
-            [
-                'name' => 'dr. Sari Dewi',
-                'poli_id' => 5,
-                'hari_kerja' => 'jumat,sabtu',
-                'start_time' => '10:00:00',
-                'end_time' => '14:00:00',
-            ],
+            // [
+            //     'name' => 'dr. Yudha Saputra',
+            //     'poli_id' => 5,
+            //     'hari_kerja' => 'selasa,kamis',
+            //     'start_time' => '08:00:00',
+            //     'end_time' => '12:00:00',
+            // ],
+            // [
+            //     'name' => 'dr. Sari Dewi',
+            //     'poli_id' => 5,
+            //     'hari_kerja' => 'jumat,sabtu',
+            //     'start_time' => '10:00:00',
+            //     'end_time' => '14:00:00',
+            // ],
 
             // Poli 6
             [
-                'name' => 'dr. Rio Wahyudi',
+                'name' => 'dr. Tiktok',
                 'poli_id' => 6,
                 'hari_kerja' => 'senin,selasa,rabu',
                 'start_time' => '08:00:00',
                 'end_time' => '12:00:00',
+                'photo' => 'toktik.png'
             ],
             [
-                'name' => 'dr. Nanda Khairunnisa',
+                'name' => 'dr. Mobil Legendaris',
                 'poli_id' => 6,
                 'hari_kerja' => 'senin,rabu,jumat',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+                'photo' => 'mobiles.jpeg'
             ],
             [
-                'name' => 'drg. Hani Wulandari',
+                'name' => 'dr. Siti Buku Tematik',
                 'poli_id' => 6,
-                'hari_kerja' => 'selasa,kamis',
-                'start_time' => '10:00:00',
-                'end_time' => '14:00:00',
-            ],
-            [
-                'name' => 'dr. Yoga Pramana',
-                'poli_id' => 6,
-                'hari_kerja' => 'jumat,sabtu',
-                'start_time' => '08:00:00',
-                'end_time' => '12:00:00',
-            ],
-            [
-                'name' => 'dr. Agus Wijaya',
-                'poli_id' => 6,
-                'hari_kerja' => 'senin,selasa,rabu,kamis',
+                'hari_kerja' => 'senin,selasa,rabu',
                 'start_time' => '09:00:00',
                 'end_time' => '13:00:00',
+                'photo' => 'siti.png'
             ],
+            // [
+            //     'name' => 'dr. Yoga Pramana',
+            //     'poli_id' => 6,
+            //     'hari_kerja' => 'jumat,sabtu',
+            //     'start_time' => '08:00:00',
+            //     'end_time' => '12:00:00',
+            // ],
+            // [
+            //     'name' => 'dr. Agus Wijaya',
+            //     'poli_id' => 6,
+            //     'hari_kerja' => 'senin,selasa,rabu,kamis',
+            //     'start_time' => '09:00:00',
+            //     'end_time' => '13:00:00',
+            // ],
         ];
 
 
