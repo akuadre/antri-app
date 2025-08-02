@@ -88,7 +88,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 md:py-32">
+    <section class="min-h-screen relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 md:py-32 flex flex-col justify-center items-center">
         <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div class="container mx-auto px-4 md:px-6 relative">
             <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
@@ -176,10 +176,10 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4 md:px-6">
+    <section id="features" class="min-h-screen flex items-center justify-center py-20 md:py-32 bg-gray-50 dark:bg-gray-800">
+        <div class="flex flex-col justify-between container mx-auto px-4 md:px-6">
             <div class="text-center space-y-4 mb-16">
-                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-700 dark:bg-primary-900 text-slate-200 dark:text-sky-300">
                     Fitur Unggulan
                 </div>
                 <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
@@ -235,10 +235,10 @@
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 md:py-32 bg-white dark:bg-gray-900">
+    <section id="how-it-works" class="min-h-screen flex items-center justify-center py-20 md:py-32 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center space-y-4 mb-16">
-                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-secondary-100 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-300">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-secondary-100 dark:bg-emerald-700 text-slate-600 bg-emerald-300 dark:text-slate-200">
                     Cara Kerja
                 </div>
                 <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 dark:text-white">
@@ -314,7 +314,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-800">
+    <section id="testimonials" class="min-h-screen flex items-center justify-center py-20 md:py-32 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center space-y-4 mb-16">
                 <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent-100 dark:bg-accent-900 text-accent-700 dark:text-accent-300">
