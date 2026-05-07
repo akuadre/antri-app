@@ -335,9 +335,9 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        foreach ($antrians as $antrian) {
-            Antrian::create($antrian);
-        }
+        // foreach ($antrians as $antrian) {
+        //     Antrian::create($antrian);
+        // }
 
         // Sementara
 

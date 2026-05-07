@@ -16,11 +16,13 @@ class AdminController extends Controller
             ->latest()
             ->take(5)
             ->get();
+        $antrians = Antrian::all();
 
         return view('admin.page.dashboard.index', compact(
             'totalAntrian',
             'selesaiCount',
-            'recentAntrian'
+            'recentAntrian',
+            'antrians'
         ));
     }
 }
