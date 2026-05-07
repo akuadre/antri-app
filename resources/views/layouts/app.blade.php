@@ -68,6 +68,7 @@
         }
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 {{-- <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white min-h-screen overflow-x-hidden"> --}}
 <body class="bg-gray-900 text-white min-h-screen overflow-x-hidden">
